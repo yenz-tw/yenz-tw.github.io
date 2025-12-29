@@ -6,17 +6,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- Hero Section -->
   <section class="hero">
     <canvas class="hero-bg-canvas" id="heroCanvas"></canvas>
-    
     <div class="hero-content">
       <div class="hero-line"></div>
       <h1 class="hero-title">YENZ</h1>
       <p class="hero-slogan-zh">精雕完美，驚艷世界。</p>
       <p class="hero-slogan-en">So sophisticated, so perfect.</p>
     </div>
-    
     <div class="hero-scroll">
       <span class="hero-scroll-text">SCROLL</span>
       <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+  
+  <!-- Video Section - 米白色背景 -->
+  <section class="video-section">
+    <div class="video-container">
+      <div class="video-title">
+        <h2>2025 品牌形象影片</h2>
+        <p>《島嶼心弦，雋永之詩》</p>
+      </div>
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/Ido7ko6CGnE?si=lgfPuuc_btdmZuNt" 
+          title="艷世設計 YENZ｜2025 品牌形象影片《島嶼心弦，雋永之詩》" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      </div>
     </div>
   </section>
   
@@ -28,76 +46,105 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="section-subtitle">遇見艷世</p>
     </div>
     
-    <div class="brand-story reveal reveal-delay-1">
-      <div class="brand-story-content">
-        <p class="brand-story-text">
-          設計，是將理念精雕為現實的藝術。
-        </p>
-        <p class="brand-story-text">
-          真正的設計，不僅是視覺的驚鴻一瞥，更是經得起時間淬鍊的經典。
-          我們以匠心獨運的精湛技藝，悉心雕琢每一個細節，
-          將您的品牌故事與核心理念，轉化為令人怦然心動的視覺語言。
-        </p>
+    <div class="brand-intro reveal">
+      <p class="brand-intro-lead">
+        設計，是為您的非凡品味，尋得最深層的共鳴。
+      </p>
+      <p class="brand-intro-text">
+        在萬千選擇中，您與艷世的相遇，是源於對美學、對細節、對雋永價值的共同追求，一份精準而溫暖的品味對談就此展開。真正的設計，不僅是視覺的驚鴻一瞥，它更是一場情感的觸動，一份能經得起時間淬鍊，恆久流傳的經典。
+      </p>
+      <p class="brand-intro-text">
+        2016年，創辦人瞿長緣，懷抱著讓世界為之驚艷的溫暖初心，在台北創立了艷世設計。她深信，每一個品牌都蘊含著獨特的生命力與故事，值得被以最精緻、最富內涵的方式演繹。
+      </p>
+    </div>
+  </section>
+  
+  <!-- Eternal Knot Section - 深色背景 -->
+  <section class="section section-dark">
+    <div class="eternal-knot-section">
+      <div class="knot-visual reveal">
+        <div class="knot-circles">
+          <div class="knot-circle knot-circle-outer"></div>
+          <div class="knot-circle knot-circle-middle"></div>
+          <div class="knot-circle knot-circle-inner"></div>
+          <span class="knot-symbol">Y</span>
+        </div>
       </div>
       
-      <div class="brand-symbol reveal reveal-delay-2">
-        <div class="eternal-knot">
-          <span class="knot-text">永恆之結</span>
-          <span class="knot-subtext">The Eternal Knot</span>
-        </div>
+      <div class="knot-content reveal reveal-delay-1">
+        <h2 class="knot-title">永恆之結</h2>
+        <p class="knot-subtitle">The Eternal Knot</p>
         <p class="knot-desc">
-          YENZ 的品牌印記，是一個視覺化的哲學。<br>
-          策略與美學的無限對話。<br>
-          根基與綻放的品牌生命力。<br>
-          信任與共創的永恆夥伴。
+          YENZ 的品牌印記，不僅是品牌首字母 Y 的優雅化身，它更是一個視覺化的哲學——一個生生不息的「永恆之結」。
         </p>
+        
+        <div class="knot-meanings">
+          <div class="knot-meaning">
+            <span class="meaning-icon">◇</span>
+            <div>
+              <h4>策略與美學的無限對話</h4>
+              <p>卓越的設計源於策略與美學的緊密結合，兩者相互依存、彼此成就。</p>
+            </div>
+          </div>
+          <div class="knot-meaning">
+            <span class="meaning-icon">◈</span>
+            <div>
+              <h4>根基與綻放的品牌生命力</h4>
+              <p>繩結的底部穩固而緊密，象徵品牌奠定的堅實策略根基。</p>
+            </div>
+          </div>
+          <div class="knot-meaning">
+            <span class="meaning-icon">◎</span>
+            <div>
+              <h4>信任與共創的永恆夥伴</h4>
+              <p>與客戶之間建立在信任與共創之上的永恆夥伴關係。</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
   
-  <!-- Services Section -->
-  <section class="section section-dark">
+  <!-- Services Section - 米白色背景 -->
+  <section class="section section-cream">
     <div class="section-header reveal">
       <span class="section-number">02</span>
       <h2 class="section-title">SERVICES</h2>
       <p class="section-subtitle">全方位品牌解決方案</p>
     </div>
     
+    <p class="services-intro reveal">
+      艷世，讓您的品牌驚艷世界。我們為您的品牌量身打造卓越的視覺敘事與數位體驗。<br>
+      從核心識別到虛擬場域，每一處皆是精雕細琢，旨在成就您的非凡。
+    </p>
+    
     <div class="services-grid">
       <div class="service-card reveal reveal-delay-1">
         <span class="service-icon">◇</span>
         <h3 class="service-title">BRAND IDENTITY</h3>
         <p class="service-title-zh">品牌識別策略</p>
-        <p class="service-desc">
-          讓品牌，成為一種信仰。深入探究品牌精髓，打造獨一無二的識別系統。
-        </p>
+        <p class="service-desc">讓品牌，成為一種信仰。深入探究品牌精髓，打造獨一無二的識別系統。</p>
       </div>
       
       <div class="service-card reveal reveal-delay-2">
         <span class="service-icon">◈</span>
         <h3 class="service-title">VISUAL DESIGN</h3>
         <p class="service-title-zh">視覺傳達設計</p>
-        <p class="service-desc">
-          藝術與策略的視覺盛宴。將品牌訊息昇華為觸動心弦的視覺敘事。
-        </p>
+        <p class="service-desc">藝術與策略的視覺盛宴。將品牌訊息昇華為觸動心弦的視覺敘事。</p>
       </div>
       
       <div class="service-card reveal reveal-delay-3">
         <span class="service-icon">◎</span>
         <h3 class="service-title">DIGITAL EXPERIENCE</h3>
         <p class="service-title-zh">數位體驗</p>
-        <p class="service-desc">
-          優雅的互動藝術。為品牌打造連繫核心客戶的數位橋樑。
-        </p>
+        <p class="service-desc">優雅的互動藝術。為品牌打造連繫核心客戶的數位橋樑。</p>
       </div>
       
       <div class="service-card reveal reveal-delay-4">
         <span class="service-icon">❖</span>
         <h3 class="service-title">VIRTUAL WORLD</h3>
         <p class="service-title-zh">虛擬世界</p>
-        <p class="service-desc">
-          拓展維度的品牌敘事。VTuber 角色塑造與 LIVE2D 動態呈現。
-        </p>
+        <p class="service-desc">拓展維度的品牌敘事。VTuber 角色塑造與 LIVE2D 動態呈現。</p>
       </div>
     </div>
     
@@ -106,17 +153,70 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
   
-  <!-- Works Section -->
-  <section class="section section-gradient">
+  <!-- Promises Section - 米白色深 -->
+  <section class="section section-cream-dark">
     <div class="section-header reveal">
       <span class="section-number">03</span>
+      <h2 class="section-title" style="color: var(--forest-dark);">OUR PROMISES</h2>
+      <p class="section-subtitle" style="color: var(--forest);">艷世設計三大承諾</p>
+    </div>
+    
+    <p class="promise-intro reveal">
+      信任是我們與您建立深厚關係的基石。為此，我們鄭重獻上三大核心承諾，<br>
+      讓您的品牌之旅，從初始到未來，全程安心無虞，璀璨啟航。
+    </p>
+    
+    <div class="promise-grid">
+      <div class="promise-card reveal reveal-delay-1">
+        <div class="promise-number">01</div>
+        <h3 class="promise-title">獨家匠造，彰顯唯一</h3>
+        <p class="promise-desc">您的品牌值得擁有獨一無二的視覺符號。我們不追逐制式，亦不複製短暫流行，透過深度對談，傾聽您的品牌故事與願景。</p>
+      </div>
+      
+      <div class="promise-card reveal reveal-delay-2">
+        <div class="promise-number">02</div>
+        <h3 class="promise-title">智慧結晶，專屬歸屬</h3>
+        <p class="promise-desc">您在艷世所孕育的每一件設計，其完整的著作財產權將毫無保留地歸您所有。我們堅持透明公開，讓您的權益一次到位。</p>
+      </div>
+      
+      <div class="promise-card reveal reveal-delay-3">
+        <div class="promise-number">03</div>
+        <h3 class="promise-title">專屬顧問，品牌遠航</h3>
+        <p class="promise-desc">品牌發展是持續的旅程。無論未來您的品牌遇到任何疑問，艷世的專業團隊都將是您最堅實的後盾。</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Founder Section -->
+  <section class="section section-gradient">
+    <div class="founder-section reveal">
+      <div class="founder-image">
+        <div class="founder-image-placeholder">
+          <span>長</span>
+        </div>
+      </div>
+      
+      <div class="founder-content">
+        <p class="founder-quote">
+          2025年，我們始終以專業與熱忱，為客戶打造獨一無二的設計，共創品牌價值。未來，我們將持續精進，追求卓越。此志不渝，永矢弗諼。
+        </p>
+        <p class="founder-name">瞿長緣 Chang-Yuan Qu</p>
+        <p class="founder-title">Founder & Creative Director</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Works Section -->
+  <section class="section section-dark">
+    <div class="section-header reveal">
+      <span class="section-number">04</span>
       <h2 class="section-title">SELECTED WORKS</h2>
       <p class="section-subtitle">精選作品</p>
     </div>
     
     <div class="works-grid">
       <div class="work-card reveal reveal-delay-1">
-        <div class="work-card-bg" style="background-color: var(--forest);"></div>
+        <div class="work-card-bg" style="background: linear-gradient(135deg, #1a4d3a 0%, #0d3d2e 100%);"></div>
         <div class="work-card-overlay">
           <h3 class="work-card-title">FOREDU 森知殿</h3>
           <p class="work-card-subtitle">台灣原生動物教育動畫</p>
@@ -124,7 +224,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
       
       <div class="work-card reveal reveal-delay-2">
-        <div class="work-card-bg" style="background-color: var(--forest-light);"></div>
+        <div class="work-card-bg" style="background: linear-gradient(135deg, #2a5a4a 0%, #14352a 100%);"></div>
         <div class="work-card-overlay">
           <h3 class="work-card-title">長頸鹿藥師藥局</h3>
           <p class="work-card-subtitle">品牌識別設計</p>
@@ -132,7 +232,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
       
       <div class="work-card reveal reveal-delay-3">
-        <div class="work-card-bg" style="background-color: var(--forest-dark);"></div>
+        <div class="work-card-bg" style="background: linear-gradient(135deg, #0a2820 0%, #061a12 100%);"></div>
         <div class="work-card-overlay">
           <h3 class="work-card-title">AINOMORI 靛之森</h3>
           <p class="work-card-subtitle">VTuber IP 設計</p>
@@ -155,82 +255,177 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-  /* Hero Canvas Animation */
-  .hero-bg-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-  
-  /* Brand Story */
-  .brand-story {
-    max-width: 1200px;
+  /* Brand Intro */
+  .brand-intro {
+    max-width: 900px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
+    text-align: center;
   }
   
-  .brand-story-content {
-    
-  }
-  
-  .brand-story-text {
+  .brand-intro-lead {
     font-family: 'Noto Serif TC', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+  }
+  
+  .brand-intro-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
     color: var(--gold-light);
     line-height: 2.2;
     margin-bottom: 1.5rem;
-    letter-spacing: 0.05em;
   }
   
-  .brand-story-text:first-child {
-    font-size: 1.5rem;
-    color: var(--white);
-    margin-bottom: 2rem;
+  /* Eternal Knot */
+  .eternal-knot-section {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
   }
   
-  .brand-symbol {
-    text-align: center;
-    padding: 4rem;
-    border: 1px solid rgba(201, 169, 98, 0.2);
-    background: rgba(201, 169, 98, 0.02);
+  .knot-visual {
+    display: flex;
+    justify-content: center;
   }
   
-  .eternal-knot {
-    margin-bottom: 2rem;
+  .knot-circles {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
-  .knot-text {
-    display: block;
+  .knot-circle {
+    position: absolute;
+    border: 1px solid rgba(201, 169, 98, 0.3);
+    border-radius: 50%;
+    animation: knotRotate 30s linear infinite;
+  }
+  
+  .knot-circle-outer {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .knot-circle-middle {
+    width: 200px;
+    height: 200px;
+    animation-direction: reverse;
+    animation-duration: 25s;
+  }
+  
+  .knot-circle-inner {
+    width: 150px;
+    height: 150px;
+    animation-duration: 20s;
+  }
+  
+  @keyframes knotRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .knot-symbol {
+    font-family: 'Cinzel', serif;
+    font-size: 4rem;
+    color: var(--gold);
+    z-index: 10;
+  }
+  
+  .knot-title {
     font-family: 'Noto Serif TC', serif;
     font-size: 2rem;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--gold);
-    letter-spacing: 0.3em;
     margin-bottom: 0.5rem;
   }
   
-  .knot-subtext {
+  .knot-subtitle {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-style: italic;
     color: var(--gold-light);
-    letter-spacing: 0.2em;
+    margin-bottom: 2rem;
   }
   
   .knot-desc {
     font-family: 'Noto Serif TC', serif;
-    font-size: 0.95rem;
-    font-weight: 300;
+    font-size: 1rem;
+    font-weight: 400;
     color: var(--gold-light);
     line-height: 2;
+    margin-bottom: 2rem;
+  }
+  
+  .knot-meanings {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .knot-meaning {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .meaning-icon {
+    font-size: 1.2rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+  
+  .knot-meaning h4 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  
+  .knot-meaning p {
+    font-size: 0.9rem;
+    color: var(--gold-light);
+    line-height: 1.7;
     opacity: 0.8;
+  }
+  
+  /* Services Intro */
+  .services-intro {
+    text-align: center;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--forest);
+    line-height: 2;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Promise Intro */
+  .promise-intro {
+    text-align: center;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--forest);
+    line-height: 2;
+    margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   /* Section CTA */
@@ -241,19 +436,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   
   /* Responsive */
   @media (max-width: 1024px) {
-    .brand-story {
+    .eternal-knot-section {
       grid-template-columns: 1fr;
       gap: 4rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .brand-symbol {
-      padding: 2rem;
+      text-align: center;
     }
     
-    .knot-text {
-      font-size: 1.5rem;
+    .knot-meanings {
+      max-width: 500px;
+      margin: 0 auto;
     }
   }
 </style>
@@ -273,7 +464,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     function createParticles() {
       particles = [];
       const count = Math.floor((heroCanvas.width * heroCanvas.height) / 15000);
-      
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * heroCanvas.width,
@@ -289,13 +479,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     
     function animateParticles() {
       if (!ctx) return;
-      
       ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
       
       particles.forEach(p => {
         p.x += p.speedX;
         p.y += p.speedY;
-        
         if (p.x < 0) p.x = heroCanvas.width;
         if (p.x > heroCanvas.width) p.x = 0;
         if (p.y < 0) p.y = heroCanvas.height;
@@ -303,13 +491,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        
-        if (p.gold) {
-          ctx.fillStyle = `rgba(201, 169, 98, ${p.opacity})`;
-        } else {
-          ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity * 0.3})`;
-        }
-        
+        ctx.fillStyle = p.gold ? `rgba(201, 169, 98, ${p.opacity})` : `rgba(255, 255, 255, ${p.opacity * 0.3})`;
         ctx.fill();
       });
       
@@ -319,13 +501,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           const dx = p1.x - p2.x;
           const dy = p1.y - p2.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          
           if (distance < 120) {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            const opacity = (1 - distance / 120) * 0.1;
-            ctx.strokeStyle = `rgba(201, 169, 98, ${opacity})`;
+            ctx.strokeStyle = `rgba(201, 169, 98, ${(1 - distance / 120) * 0.1})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -335,11 +515,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       requestAnimationFrame(animateParticles);
     }
     
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      createParticles();
-    });
-    
+    window.addEventListener('resize', () => { resizeCanvas(); createParticles(); });
     resizeCanvas();
     createParticles();
     animateParticles();
