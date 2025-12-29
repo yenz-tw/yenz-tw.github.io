@@ -8,7 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <canvas class="hero-bg-canvas" id="heroCanvas"></canvas>
     <div class="hero-content">
       <div class="hero-line"></div>
-      <h1 class="hero-title">YENZ</h1>
+      <img src="/images/retina-yenz.svg" alt="YENZ" class="hero-logo-img" />
       <p class="hero-slogan-zh">精雕完美，驚艷世界。</p>
       <p class="hero-slogan-en">So sophisticated, so perfect.</p>
     </div>
@@ -60,7 +60,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
   
-  <!-- Eternal Knot Section - 深色背景 -->
+  <!-- Eternal Knot Section - 深色背景，使用 symbol.svg -->
   <section class="section section-dark">
     <div class="eternal-knot-section">
       <div class="knot-visual reveal">
@@ -68,7 +68,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="knot-circle knot-circle-outer"></div>
           <div class="knot-circle knot-circle-middle"></div>
           <div class="knot-circle knot-circle-inner"></div>
-          <span class="knot-symbol">Y</span>
+          <img src="/images/symbol.svg" alt="永恆之結" class="knot-symbol-img" />
         </div>
       </div>
       
@@ -273,7 +273,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-  /* Video Section Enhanced */
+  /* Hero Logo Image */
+  .hero-logo-img {
+    width: clamp(250px, 45vw, 550px);
+    height: auto;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1.2s var(--ease-out-expo) 0.5s forwards;
+    filter: drop-shadow(0 0 60px rgba(201,169,98,0.3));
+  }
+  
+  /* Video Section */
   .video-section {
     padding: 6rem 4rem;
     background: var(--cream);
@@ -396,11 +406,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     to { transform: rotate(360deg); }
   }
   
-  .knot-symbol {
-    font-family: 'Cinzel', serif;
-    font-size: 4rem;
-    color: var(--gold);
+  .knot-symbol-img {
+    width: 80px;
+    height: auto;
     z-index: 10;
+    filter: drop-shadow(0 0 20px rgba(201,169,98,0.4));
   }
   
   .knot-title {
@@ -631,6 +641,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       margin: 0 auto;
     }
   }
+  
+  @media (max-width: 768px) {
+    .hero-logo-img {
+      width: clamp(200px, 70vw, 300px);
+    }
+    
+    .video-section {
+      padding: 4rem 1.5rem;
+    }
+  }
 </style>
 
 <script>
@@ -679,7 +699,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         ctx.fill();
       });
       
-      // Connections
       particles.forEach((p1, i) => {
         particles.slice(i + 1).forEach(p2 => {
           const dx = p1.x - p2.x;

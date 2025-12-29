@@ -34,7 +34,7 @@ const siteUrl = 'https://yenz.tw';
   <meta property="og:url" content={siteUrl + currentPath}>
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
-  <meta property="og:image" content={siteUrl + "/images/og-image.jpg"}>
+  <meta property="og:image" content={siteUrl + "/images/og-image.webp"}>
   <meta property="og:site_name" content="艷世設計 YENZ Design">
   <meta property="og:locale" content="zh_TW">
   
@@ -43,7 +43,7 @@ const siteUrl = 'https://yenz.tw';
   <meta name="twitter:url" content={siteUrl + currentPath}>
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
-  <meta name="twitter:image" content={siteUrl + "/images/og-image.jpg"}>
+  <meta name="twitter:image" content={siteUrl + "/images/og-image.webp"}>
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -91,7 +91,7 @@ const siteUrl = 'https://yenz.tw';
       </div>
       
       <div class="intro-center" id="introCenter">
-        <img src="/images/yenz.svg" alt="YENZ" class="intro-logo-img" />
+        <img src="/images/retina-yenz.svg" alt="YENZ" class="intro-logo-img" />
         <div class="intro-line"></div>
         <p class="intro-hint">點擊任意處開始</p>
         <p class="intro-hint-sub">Click anywhere to enter</p>
@@ -110,10 +110,18 @@ const siteUrl = 'https://yenz.tw';
   <div id="main-site" class={showIntro ? '' : 'visible'}>
     <header class="header" id="header">
       <a href="/" class="header-logo">
-        <img src="/images/symbol.svg" alt="YENZ" class="header-logo-symbol" />
-        <span class="header-logo-text">YENZ</span>
+        <img src="/images/home-yenz.svg" alt="YENZ" class="header-logo-img" />
       </a>
-      <nav class="header-nav">
+      
+      <!-- 漢堡按鈕 -->
+      <button class="hamburger" id="hamburger" aria-label="選單">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      
+      <!-- 桌面導航 -->
+      <nav class="header-nav" id="headerNav">
         <a href="/about" class={currentPath === '/about' || currentPath === '/about/' ? 'active' : ''}>ABOUT</a>
         <a href="/services" class={currentPath === '/services' || currentPath === '/services/' ? 'active' : ''}>SERVICES</a>
         <a href="/works" class={currentPath === '/works' || currentPath === '/works/' ? 'active' : ''}>WORKS</a>
@@ -121,6 +129,24 @@ const siteUrl = 'https://yenz.tw';
         <a href="/projects" class={currentPath.startsWith('/projects') ? 'active' : ''}>CSR</a>
         <a href="/contact" class={currentPath === '/contact' || currentPath === '/contact/' ? 'active' : ''}>CONTACT</a>
       </nav>
+      
+      <!-- 手機選單 -->
+      <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav">
+          <a href="/" class="mobile-nav-logo">
+            <img src="/images/symbol.svg" alt="YENZ" />
+          </a>
+          <a href="/about" class={currentPath === '/about' || currentPath === '/about/' ? 'active' : ''}>ABOUT</a>
+          <a href="/services" class={currentPath === '/services' || currentPath === '/services/' ? 'active' : ''}>SERVICES</a>
+          <a href="/works" class={currentPath === '/works' || currentPath === '/works/' ? 'active' : ''}>WORKS</a>
+          <a href="/process" class={currentPath === '/process' || currentPath === '/process/' ? 'active' : ''}>PROCESS</a>
+          <a href="/projects" class={currentPath.startsWith('/projects') ? 'active' : ''}>CSR</a>
+          <a href="/contact" class={currentPath === '/contact' || currentPath === '/contact/' ? 'active' : ''}>CONTACT</a>
+        </nav>
+        <div class="mobile-menu-footer">
+          <p>精雕完美，驚艷世界。</p>
+        </div>
+      </div>
     </header>
     
     <main>
@@ -195,6 +221,30 @@ const siteUrl = 'https://yenz.tw';
   </audio>
   
   <script is:inline>
+    // ====== 漢堡選單 ======
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+    
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        hamburger.classList.toggle('active', menuOpen);
+        mobileMenu.classList.toggle('active', menuOpen);
+        document.body.style.overflow = menuOpen ? 'hidden' : '';
+      });
+      
+      // 點擊連結後關閉選單
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuOpen = false;
+          hamburger.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+    
     // ====== 星辰碎片滑鼠效果 ======
     const cursorGlow = document.getElementById('cursorGlow');
     const cursorDot = document.getElementById('cursorDot');
@@ -206,7 +256,6 @@ const siteUrl = 'https://yenz.tw';
       mouseX = e.clientX;
       mouseY = e.clientY;
       
-      // 產生星辰碎片
       if (Math.random() > 0.5) {
         createStardust(mouseX, mouseY);
       }
@@ -216,14 +265,12 @@ const siteUrl = 'https://yenz.tw';
       const particle = document.createElement('div');
       particle.className = 'stardust';
       
-      // 隨機偏移
       const offsetX = (Math.random() - 0.5) * 20;
       const offsetY = (Math.random() - 0.5) * 20;
       
       particle.style.left = (x + offsetX) + 'px';
       particle.style.top = (y + offsetY) + 'px';
       
-      // 隨機大小 (很小的點)
       const size = 1 + Math.random() * 2;
       particle.style.width = size + 'px';
       particle.style.height = size + 'px';
@@ -233,7 +280,6 @@ const siteUrl = 'https://yenz.tw';
     }
     
     function animateCursor() {
-      // 光暈平滑跟隨
       glowX += (mouseX - glowX) * 0.12;
       glowY += (mouseY - glowY) * 0.12;
       
@@ -242,13 +288,11 @@ const siteUrl = 'https://yenz.tw';
         cursorGlow.style.top = glowY + 'px';
       }
       
-      // 小點直接跟隨
       if (cursorDot) {
         cursorDot.style.left = mouseX + 'px';
         cursorDot.style.top = mouseY + 'px';
       }
       
-      // 更新星辰碎片
       stardustParticles = stardustParticles.filter(p => {
         p.life -= 0.02;
         p.el.style.opacity = String(p.life);
@@ -265,7 +309,6 @@ const siteUrl = 'https://yenz.tw';
     }
     animateCursor();
     
-    // Hover 效果
     document.querySelectorAll('a, button').forEach(el => {
       el.addEventListener('mouseenter', () => {
         if (cursorDot) cursorDot.classList.add('hover');
