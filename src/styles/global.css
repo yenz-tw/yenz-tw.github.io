@@ -36,10 +36,11 @@ a, button { cursor: none; }
 h1, h2, h3, h4, h5, h6 { font-family: 'Cinzel', serif; font-weight: 400; letter-spacing: 0.1em; }
 
 /* Cursor */
-.cursor-glow { position: fixed; width: 200px; height: 200px; background: radial-gradient(circle, rgba(201,169,98,0.18) 0%, rgba(201,169,98,0.05) 40%, transparent 60%); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); }
-.cursor-core { position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 10001; box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold), 0 0 40px var(--gold-glow); transform: translate(-50%, -50%); transition: all 0.2s ease; }
-.cursor-core.hover { width: 50px; height: 50px; background: transparent; border: 1px solid var(--gold); }
-.meteor-trail { position: fixed; pointer-events: none; z-index: 9999; border-radius: 50%; background: var(--gold); }
+/* 星辰碎片滑鼠 */
+.cursor-glow { position: fixed; width: 150px; height: 150px; background: radial-gradient(circle, rgba(201,169,98,0.15) 0%, rgba(201,169,98,0.03) 50%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); }
+.cursor-dot { position: fixed; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 10001; box-shadow: 0 0 6px var(--gold), 0 0 12px var(--gold-glow); transform: translate(-50%, -50%); transition: all 0.15s ease; }
+.cursor-dot.hover { width: 30px; height: 30px; background: transparent; border: 1px solid var(--gold); box-shadow: 0 0 20px var(--gold-glow); }
+.stardust { position: fixed; pointer-events: none; z-index: 9999; border-radius: 50%; background: var(--gold); box-shadow: 0 0 4px var(--gold-glow); }
 
 /* Reading Bar */
 .reading-bar { position: fixed; bottom: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); z-index: 9999; box-shadow: 0 0 15px var(--gold-glow); }
@@ -65,6 +66,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Cinzel', serif; font-weight: 400; letter-
 @keyframes nebulaDrift { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(40px, -30px) scale(1.15); } }
 
 .intro-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; }
+.intro-logo-img { width: clamp(180px, 30vw, 350px); height: auto; margin-bottom: 2rem; opacity: 0; animation: fadeInScale 2s var(--ease-out-expo) 0.5s forwards; filter: drop-shadow(0 0 40px rgba(201,169,98,0.5)); }
 .intro-logo { font-family: 'Cinzel', serif; font-size: clamp(4rem, 15vw, 12rem); font-weight: 400; color: var(--gold); letter-spacing: 0.3em; text-shadow: 0 0 60px var(--gold-glow); margin-bottom: 2rem; opacity: 0; animation: fadeInScale 2s var(--ease-out-expo) 0.5s forwards; }
 .intro-line { width: 0; height: 1px; background: var(--gold); margin: 0 auto 2rem; animation: expandLine 1.5s var(--ease-out-expo) 1.5s forwards; }
 .intro-hint { font-family: 'Noto Serif TC', serif; font-size: 1rem; font-weight: 400; color: rgba(255, 255, 255, 0.6); letter-spacing: 0.4em; opacity: 0; animation: fadeIn 1s ease 2.5s forwards, gentlePulse 3s ease-in-out 3.5s infinite; }
@@ -101,8 +103,11 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Cinzel', serif; font-weight: 400; letter-
 /* Header */
 .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(180deg, rgba(6,26,18,0.95) 0%, transparent 100%); transition: all 0.4s ease; }
 .header.scrolled { background: rgba(6, 26, 18, 0.98); backdrop-filter: blur(20px); padding: 1rem 4rem; }
-.header-logo { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--gold); letter-spacing: 0.2em; text-decoration: none; transition: all 0.3s ease; }
-.header-logo:hover { text-shadow: 0 0 30px var(--gold-glow); }
+.header-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; transition: all 0.3s ease; }
+.header-logo:hover { transform: translateY(-2px); }
+.header-logo:hover .header-logo-text { text-shadow: 0 0 30px var(--gold-glow); }
+.header-logo-symbol { width: 32px; height: 32px; }
+.header-logo-text { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold); letter-spacing: 0.2em; }
 .header-nav { display: flex; gap: 3rem; }
 .header-nav a { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--gold-light); text-decoration: none; letter-spacing: 0.2em; position: relative; transition: color 0.3s ease; }
 .header-nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.4s var(--ease-out-expo); }
@@ -207,8 +212,14 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Cinzel', serif; font-weight: 400; letter-
 /* Footer */
 .footer { background: var(--forest-darkest); border-top: 1px solid rgba(201, 169, 98, 0.1); padding: 5rem 4rem 3rem; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; max-width: 1400px; margin: 0 auto 4rem; }
-.footer-logo { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 1rem; }
-.footer-slogan { font-family: 'Noto Serif TC', serif; font-size: 0.9rem; font-weight: 400; color: var(--gold-light); opacity: 0.7; }
+.footer-brand { }
+.footer-logo-wrap { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+.footer-symbol { width: 50px; height: 50px; }
+.footer-logo-text { display: flex; flex-direction: column; }
+.footer-logo { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--gold); letter-spacing: 0.2em; line-height: 1; }
+.footer-tagline-zh { font-family: 'Noto Serif TC', serif; font-size: 0.85rem; font-weight: 400; color: var(--gold-light); margin-top: 0.5rem; }
+.footer-tagline-en { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; font-style: italic; color: var(--gold-light); opacity: 0.7; margin-top: 0.2rem; }
+.footer-desc { font-size: 0.9rem; color: var(--gold-light); opacity: 0.6; line-height: 1.8; max-width: 350px; }
 .footer-section-title { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 1.5rem; }
 .footer-links { list-style: none; }
 .footer-links li { margin-bottom: 0.8rem; }

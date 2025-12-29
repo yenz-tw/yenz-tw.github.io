@@ -7,11 +7,12 @@ interface Props {
 
 const { 
   title = '艷世設計 YENZ Design | 精雕完美，驚艷世界',
-  description = '艷世設計專注品牌識別、視覺設計、網站開發與虛擬形象設計。以精湛工藝為您的品牌打造永恆經典。',
+  description = '艷世設計 YENZ Design 是台灣頂尖品牌設計公司，專注品牌識別、視覺設計、網站開發與 VTuber 虛擬形象設計。以匠心獨運的精湛技藝，為您的品牌打造經得起時間考驗的永恆經典。',
   showIntro = false
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
+const siteUrl = 'https://yenz.tw';
 ---
 
 <!DOCTYPE html>
@@ -20,19 +21,60 @@ const currentPath = Astro.url.pathname;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
+  
+  <!-- SEO Meta -->
   <meta name="description" content={description}>
+  <meta name="keywords" content="品牌設計, Logo設計, 視覺設計, 網站設計, VTuber設計, LIVE2D, 台北設計公司, 品牌識別, 艷世設計, YENZ">
+  <meta name="author" content="艷世設計 YENZ Design Studio">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href={siteUrl + currentPath}>
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={siteUrl + currentPath}>
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yenz.tw">
+  <meta property="og:image" content={siteUrl + "/images/og-image.jpg"}>
+  <meta property="og:site_name" content="艷世設計 YENZ Design">
+  <meta property="og:locale" content="zh_TW">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content={siteUrl + currentPath}>
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={siteUrl + "/images/og-image.jpg"}>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "艷世設計 YENZ Design",
+    "url": "https://yenz.tw",
+    "logo": "https://yenz.tw/images/symbol.svg",
+    "description": "台灣頂尖品牌設計公司，專注品牌識別、視覺設計、網站開發與虛擬形象設計。",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Taipei",
+      "addressCountry": "TW"
+    }
+  }
+  </script>
 </head>
 <body>
+  <!-- 星辰碎片滑鼠 -->
   <div class="cursor-glow" id="cursorGlow"></div>
-  <div class="cursor-core" id="cursorCore"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
   <div class="reading-bar" id="readingBar"></div>
   <canvas class="orb-canvas" id="orbCanvas"></canvas>
   
@@ -49,7 +91,7 @@ const currentPath = Astro.url.pathname;
       </div>
       
       <div class="intro-center" id="introCenter">
-        <div class="intro-logo">YENZ</div>
+        <img src="/images/yenz.svg" alt="YENZ" class="intro-logo-img" />
         <div class="intro-line"></div>
         <p class="intro-hint">點擊任意處開始</p>
         <p class="intro-hint-sub">Click anywhere to enter</p>
@@ -67,7 +109,10 @@ const currentPath = Astro.url.pathname;
   
   <div id="main-site" class={showIntro ? '' : 'visible'}>
     <header class="header" id="header">
-      <a href="/" class="header-logo">YENZ</a>
+      <a href="/" class="header-logo">
+        <img src="/images/symbol.svg" alt="YENZ" class="header-logo-symbol" />
+        <span class="header-logo-text">YENZ</span>
+      </a>
       <nav class="header-nav">
         <a href="/about" class={currentPath === '/about' || currentPath === '/about/' ? 'active' : ''}>ABOUT</a>
         <a href="/services" class={currentPath === '/services' || currentPath === '/services/' ? 'active' : ''}>SERVICES</a>
@@ -85,8 +130,17 @@ const currentPath = Astro.url.pathname;
     <footer class="footer">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="footer-logo">YENZ</div>
-          <p class="footer-slogan">精雕完美，驚艷世界。</p>
+          <div class="footer-logo-wrap">
+            <img src="/images/symbol.svg" alt="YENZ" class="footer-symbol" />
+            <div class="footer-logo-text">
+              <span class="footer-logo">YENZ</span>
+              <span class="footer-tagline-zh">精雕完美，驚艷世界。</span>
+              <span class="footer-tagline-en">So sophisticated, so perfect.</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            艷世設計以匠心獨運的精湛技藝，為您的品牌打造經得起時間考驗的永恆經典。讓您的品牌在全球市場中綻放獨有的耀眼光芒。
+          </p>
         </div>
         <div class="footer-section">
           <h4 class="footer-section-title">NAVIGATION</h4>
@@ -110,7 +164,7 @@ const currentPath = Astro.url.pathname;
           <h4 class="footer-section-title">CONTACT</h4>
           <ul class="footer-links">
             <li><a href="mailto:yenzdesignstudio@gmail.com">Email</a></li>
-            <li><a href="https://lin.ee/aQny7rA" target="_blank">LINE</a></li>
+            <li><a href="https://lin.ee/aQny7rA" target="_blank">LINE 諮詢</a></li>
             <li>Taipei, Taiwan</li>
           </ul>
         </div>
@@ -141,59 +195,67 @@ const currentPath = Astro.url.pathname;
   </audio>
   
   <script is:inline>
-    // ====== CURSOR - 修正版 ======
+    // ====== 星辰碎片滑鼠效果 ======
     const cursorGlow = document.getElementById('cursorGlow');
-    const cursorCore = document.getElementById('cursorCore');
+    const cursorDot = document.getElementById('cursorDot');
     let mouseX = 0, mouseY = 0;
     let glowX = 0, glowY = 0;
-    let trails = [];
+    let stardustParticles = [];
     
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       
-      // 流星尾跡
-      if (Math.random() > 0.6) {
-        createTrail(mouseX, mouseY);
+      // 產生星辰碎片
+      if (Math.random() > 0.5) {
+        createStardust(mouseX, mouseY);
       }
     });
     
-    function createTrail(x, y) {
-      const trail = document.createElement('div');
-      trail.className = 'meteor-trail';
-      trail.style.left = x + 'px';
-      trail.style.top = y + 'px';
-      const size = 2 + Math.random() * 2;
-      trail.style.width = size + 'px';
-      trail.style.height = size + 'px';
-      trail.style.opacity = '0.5';
-      document.body.appendChild(trail);
-      trails.push({ el: trail, life: 1 });
+    function createStardust(x, y) {
+      const particle = document.createElement('div');
+      particle.className = 'stardust';
+      
+      // 隨機偏移
+      const offsetX = (Math.random() - 0.5) * 20;
+      const offsetY = (Math.random() - 0.5) * 20;
+      
+      particle.style.left = (x + offsetX) + 'px';
+      particle.style.top = (y + offsetY) + 'px';
+      
+      // 隨機大小 (很小的點)
+      const size = 1 + Math.random() * 2;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      
+      document.body.appendChild(particle);
+      stardustParticles.push({ el: particle, life: 1, vy: -0.5 - Math.random() * 1 });
     }
     
     function animateCursor() {
-      // 光暈跟隨 - 更快的跟隨速度
-      glowX += (mouseX - glowX) * 0.15;
-      glowY += (mouseY - glowY) * 0.15;
+      // 光暈平滑跟隨
+      glowX += (mouseX - glowX) * 0.12;
+      glowY += (mouseY - glowY) * 0.12;
       
       if (cursorGlow) {
         cursorGlow.style.left = glowX + 'px';
         cursorGlow.style.top = glowY + 'px';
       }
       
-      // 核心直接跟隨滑鼠
-      if (cursorCore) {
-        cursorCore.style.left = mouseX + 'px';
-        cursorCore.style.top = mouseY + 'px';
+      // 小點直接跟隨
+      if (cursorDot) {
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
       }
       
-      // 尾跡動畫
-      trails = trails.filter(t => {
-        t.life -= 0.04;
-        t.el.style.opacity = String(t.life * 0.5);
-        t.el.style.transform = `scale(${t.life})`;
-        if (t.life <= 0) {
-          t.el.remove();
+      // 更新星辰碎片
+      stardustParticles = stardustParticles.filter(p => {
+        p.life -= 0.02;
+        p.el.style.opacity = String(p.life);
+        p.el.style.top = (parseFloat(p.el.style.top) + p.vy) + 'px';
+        
+        if (p.life <= 0) {
+          p.el.remove();
           return false;
         }
         return true;
@@ -206,10 +268,10 @@ const currentPath = Astro.url.pathname;
     // Hover 效果
     document.querySelectorAll('a, button').forEach(el => {
       el.addEventListener('mouseenter', () => {
-        if (cursorCore) cursorCore.classList.add('hover');
+        if (cursorDot) cursorDot.classList.add('hover');
       });
       el.addEventListener('mouseleave', () => {
-        if (cursorCore) cursorCore.classList.remove('hover');
+        if (cursorDot) cursorDot.classList.remove('hover');
       });
     });
     
@@ -292,7 +354,7 @@ const currentPath = Astro.url.pathname;
       animateOrbs();
     }
     
-    // ====== MUSIC - 15% 音量 ======
+    // ====== MUSIC ======
     const bgMusic = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicBtn');
     let isPlaying = false;
@@ -374,7 +436,7 @@ const currentPath = Astro.url.pathname;
     window.toggleMusic = toggleMusic;
     window.startMusic = startMusic;
     
-    // ====== INTRO - 修正水波從點擊位置展開 ======
+    // ====== INTRO ======
     const intro = document.getElementById('intro');
     
     if (intro) {
@@ -382,7 +444,6 @@ const currentPath = Astro.url.pathname;
       let clickX = window.innerWidth / 2;
       let clickY = window.innerHeight / 2;
       
-      // 建立星星
       function createStars() {
         const starsLayer = document.getElementById('starsLayer');
         if (!starsLayer) return;
@@ -400,7 +461,6 @@ const currentPath = Astro.url.pathname;
       }
       createStars();
       
-      // 建立水波效果 - 從點擊位置
       function createBloom(x, y) {
         for (let i = 0; i < 5; i++) {
           const ring = document.createElement('div');
@@ -417,7 +477,6 @@ const currentPath = Astro.url.pathname;
         if (introClicked || e.target.classList.contains('skip-btn')) return;
         introClicked = true;
         
-        // 記錄點擊位置
         clickX = e.clientX;
         clickY = e.clientY;
         
@@ -429,13 +488,11 @@ const currentPath = Astro.url.pathname;
         const circleExpand = document.getElementById('circleExpand');
         const mainSite = document.getElementById('main-site');
         
-        // 淡出中心內容
         if (introCenter) {
           introCenter.style.transition = 'opacity 0.8s ease';
           introCenter.style.opacity = '0';
         }
         
-        // 顯示 Slogan
         setTimeout(() => {
           if (introSlogan) {
             introSlogan.style.transition = 'opacity 1.5s ease';
@@ -443,7 +500,6 @@ const currentPath = Astro.url.pathname;
           }
         }, 600);
         
-        // 圓圈展開 - 從點擊位置
         setTimeout(() => {
           if (introSlogan) {
             introSlogan.style.transition = 'opacity 0.8s ease';
@@ -451,7 +507,6 @@ const currentPath = Astro.url.pathname;
           }
           
           if (circleExpand) {
-            // 設定圓圈位置為點擊位置
             circleExpand.style.left = clickX + 'px';
             circleExpand.style.top = clickY + 'px';
             circleExpand.style.transform = 'translate(-50%, -50%)';
@@ -466,7 +521,6 @@ const currentPath = Astro.url.pathname;
           }
         }, 4500);
         
-        // 顯示主站
         setTimeout(() => {
           intro.style.transition = 'opacity 0.5s ease';
           intro.style.opacity = '0';
@@ -482,7 +536,6 @@ const currentPath = Astro.url.pathname;
       });
     }
     
-    // Skip
     window.skipIntro = function() {
       const intro = document.getElementById('intro');
       const mainSite = document.getElementById('main-site');
@@ -528,7 +581,6 @@ const currentPath = Astro.url.pathname;
       });
     });
     
-    // Particle animation style
     if (!document.getElementById('particleStyle')) {
       const style = document.createElement('style');
       style.id = 'particleStyle';
