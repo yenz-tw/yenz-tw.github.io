@@ -1,0 +1,562 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  showIntro?: boolean;
+}
+
+const { 
+  title = '艷世設計 YENZ Design | 精雕完美，驚艷世界',
+  description = '艷世設計專注品牌識別、視覺設計、網站開發與虛擬形象設計。以精湛工藝為您的品牌打造永恆經典。',
+  showIntro = false
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yenz.tw">
+  <meta property="og:image" content="https://yenz.tw/images/og-image.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/styles/global.css">
+</head>
+<body>
+  <!-- Cursor Effects (Desktop Only) -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="cursor-core" id="cursorCore"></div>
+  
+  <!-- Reading Progress Bar -->
+  <div class="reading-bar" id="readingBar"></div>
+  
+  <!-- Particle Background Canvas -->
+  <canvas class="orb-canvas" id="orbCanvas"></canvas>
+  
+  <!-- Intro Animation (Only on Homepage) -->
+  {showIntro && (
+    <div id="intro">
+      <div class="stars-layer" id="starsLayer"></div>
+      <div class="nebula nebula-1"></div>
+      <div class="nebula nebula-2"></div>
+      
+      <div class="intro-center" id="introCenter">
+        <div class="intro-logo">YENZ</div>
+        <div class="intro-line"></div>
+        <p class="intro-hint">點擊任意處開始</p>
+        <p class="intro-hint-sub">Click anywhere to enter</p>
+      </div>
+      
+      <div class="intro-slogan" id="introSlogan">
+        <p class="slogan-zh">精雕完美，驚艷世界。</p>
+        <p class="slogan-en">So sophisticated, so perfect.</p>
+      </div>
+      
+      <div class="circle-expand" id="circleExpand"></div>
+      <button class="skip-btn" onclick="skipIntro()">SKIP</button>
+    </div>
+  )}
+  
+  <!-- Main Site -->
+  <div id="main-site" class={showIntro ? '' : 'visible'}>
+    <!-- Header -->
+    <header class="header" id="header">
+      <a href="/" class="header-logo">YENZ</a>
+      <nav class="header-nav">
+        <a href="/about" class={currentPath === '/about' || currentPath === '/about/' ? 'active' : ''}>ABOUT</a>
+        <a href="/services" class={currentPath === '/services' || currentPath === '/services/' ? 'active' : ''}>SERVICES</a>
+        <a href="/works" class={currentPath === '/works' || currentPath === '/works/' ? 'active' : ''}>WORKS</a>
+        <a href="/process" class={currentPath === '/process' || currentPath === '/process/' ? 'active' : ''}>PROCESS</a>
+        <a href="/projects" class={currentPath.startsWith('/projects') ? 'active' : ''}>PROJECTS</a>
+        <a href="/contact" class={currentPath === '/contact' || currentPath === '/contact/' ? 'active' : ''}>CONTACT</a>
+      </nav>
+    </header>
+    
+    <!-- Page Content -->
+    <main>
+      <slot />
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">YENZ</div>
+          <p class="footer-slogan">精雕完美，驚艷世界。</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4 class="footer-section-title">NAVIGATION</h4>
+          <ul class="footer-links">
+            <li><a href="/about">About</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/works">Works</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4 class="footer-section-title">SERVICES</h4>
+          <ul class="footer-links">
+            <li><a href="/services#branding">Brand Identity</a></li>
+            <li><a href="/services#visual">Visual Design</a></li>
+            <li><a href="/services#digital">Digital Experience</a></li>
+            <li><a href="/services#virtual">Virtual World</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4 class="footer-section-title">CONTACT</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:yenzdesignstudio@gmail.com">Email</a></li>
+            <li><a href="https://lin.ee/aQny7rA" target="_blank">LINE</a></li>
+            <li>Taipei, Taiwan</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2016 - 2025 YENZ Design Studio. All Rights Reserved.</p>
+        <div class="footer-affiliates">
+          Part of YENZ Group:
+          <a href="https://thetensy.com" target="_blank">Tensy</a>
+          <a href="https://ainomori.tw" target="_blank">Ainomori</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  <!-- Music Player -->
+  <div class="music-player" id="musicPlayer">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+      <svg viewBox="0 0 24 24" id="musicIcon">
+        <rect class="bar" x="4" y="10" width="3" height="4" rx="1"/>
+        <rect class="bar" x="10" y="7" width="3" height="10" rx="1"/>
+        <rect class="bar" x="16" y="10" width="3" height="4" rx="1"/>
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Background Music -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="/audio/ambient.mp3" type="audio/mpeg">
+  </audio>
+  
+  <!-- Scripts -->
+  <script is:inline>
+    // ====== CURSOR EFFECT ======
+    const cursorGlow = document.getElementById('cursorGlow');
+    const cursorCore = document.getElementById('cursorCore');
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
+    let trails = [];
+    
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      // Create meteor trail
+      if (Math.random() > 0.7) {
+        createTrail(mouseX, mouseY);
+      }
+    });
+    
+    function createTrail(x, y) {
+      const trail = document.createElement('div');
+      trail.className = 'meteor-trail';
+      trail.style.left = x + 'px';
+      trail.style.top = y + 'px';
+      trail.style.width = (3 + Math.random() * 3) + 'px';
+      trail.style.height = trail.style.width;
+      trail.style.opacity = 0.6;
+      document.body.appendChild(trail);
+      trails.push({ el: trail, life: 1 });
+    }
+    
+    function animateCursor() {
+      // Smooth follow for glow
+      glowX += (mouseX - glowX) * 0.08;
+      glowY += (mouseY - glowY) * 0.08;
+      
+      if (cursorGlow) {
+        cursorGlow.style.left = glowX + 'px';
+        cursorGlow.style.top = glowY + 'px';
+      }
+      
+      if (cursorCore) {
+        cursorCore.style.left = mouseX + 'px';
+        cursorCore.style.top = mouseY + 'px';
+      }
+      
+      // Animate trails
+      trails = trails.filter(t => {
+        t.life -= 0.03;
+        t.el.style.opacity = t.life * 0.6;
+        t.el.style.transform = `scale(${t.life})`;
+        if (t.life <= 0) {
+          t.el.remove();
+          return false;
+        }
+        return true;
+      });
+      
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+    
+    // Cursor hover effect on links
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        if (cursorCore) cursorCore.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        if (cursorCore) cursorCore.classList.remove('hover');
+      });
+    });
+    
+    // ====== READING PROGRESS BAR ======
+    const readingBar = document.getElementById('readingBar');
+    
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      if (readingBar) {
+        readingBar.style.width = progress + '%';
+      }
+    });
+    
+    // ====== HEADER SCROLL EFFECT ======
+    const header = document.getElementById('header');
+    
+    window.addEventListener('scroll', () => {
+      if (header) {
+        if (window.scrollY > 100) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+    });
+    
+    // ====== ORB BACKGROUND ======
+    const orbCanvas = document.getElementById('orbCanvas');
+    if (orbCanvas) {
+      const oCtx = orbCanvas.getContext('2d');
+      let orbs = [];
+      
+      function resizeOrb() {
+        orbCanvas.width = window.innerWidth;
+        orbCanvas.height = window.innerHeight;
+      }
+      
+      class Orb {
+        constructor() {
+          this.x = Math.random() * orbCanvas.width;
+          this.y = Math.random() * orbCanvas.height;
+          this.size = 80 + Math.random() * 120;
+          this.vx = (Math.random() - 0.5) * 0.12;
+          this.vy = (Math.random() - 0.5) * 0.12;
+          this.pulse = Math.random() * Math.PI * 2;
+          this.gold = Math.random() < 0.35;
+        }
+        
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.pulse += 0.006;
+          
+          if (this.x < -this.size) this.x = orbCanvas.width + this.size;
+          if (this.x > orbCanvas.width + this.size) this.x = -this.size;
+          if (this.y < -this.size) this.y = orbCanvas.height + this.size;
+          if (this.y > orbCanvas.height + this.size) this.y = -this.size;
+        }
+        
+        draw() {
+          const op = 0.025 + Math.sin(this.pulse) * 0.015;
+          const grad = oCtx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+          
+          if (this.gold) {
+            grad.addColorStop(0, `rgba(201,169,98,${op * 1.8})`);
+            grad.addColorStop(1, 'rgba(201,169,98,0)');
+          } else {
+            grad.addColorStop(0, `rgba(13,61,46,${op})`);
+            grad.addColorStop(1, 'rgba(13,61,46,0)');
+          }
+          
+          oCtx.fillStyle = grad;
+          oCtx.beginPath();
+          oCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          oCtx.fill();
+        }
+      }
+      
+      function initOrbs() {
+        orbs = [];
+        for (let i = 0; i < 15; i++) {
+          orbs.push(new Orb());
+        }
+      }
+      
+      function animateOrbs() {
+        oCtx.clearRect(0, 0, orbCanvas.width, orbCanvas.height);
+        orbs.forEach(o => {
+          o.update();
+          o.draw();
+        });
+        requestAnimationFrame(animateOrbs);
+      }
+      
+      window.addEventListener('resize', resizeOrb);
+      resizeOrb();
+      initOrbs();
+      animateOrbs();
+    }
+    
+    // ====== MUSIC PLAYER ======
+    const bgMusic = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+    let musicStarted = false;
+    
+    // Load saved music position
+    const savedPosition = localStorage.getItem('yenz_music_position');
+    const savedPlaying = localStorage.getItem('yenz_music_playing');
+    
+    if (bgMusic && savedPosition) {
+      bgMusic.currentTime = parseFloat(savedPosition);
+    }
+    
+    // Save music position before leaving
+    window.addEventListener('beforeunload', () => {
+      if (bgMusic) {
+        localStorage.setItem('yenz_music_position', bgMusic.currentTime);
+        localStorage.setItem('yenz_music_playing', isPlaying);
+      }
+    });
+    
+    // Auto-resume if was playing
+    if (savedPlaying === 'true' && bgMusic) {
+      // Need user interaction first, so we wait
+      document.addEventListener('click', function resumeMusic() {
+        if (!musicStarted && savedPlaying === 'true') {
+          bgMusic.volume = 0.3;
+          bgMusic.play().catch(() => {});
+          musicStarted = true;
+          isPlaying = true;
+          if (musicBtn) musicBtn.classList.add('playing');
+        }
+        document.removeEventListener('click', resumeMusic);
+      }, { once: true });
+    }
+    
+    function fadeInMusic() {
+      let v = 0;
+      const fade = setInterval(() => {
+        v += 0.008;
+        if (v >= 0.3) {
+          v = 0.3;
+          clearInterval(fade);
+        }
+        if (bgMusic) bgMusic.volume = v;
+      }, 40);
+    }
+    
+    function toggleMusic() {
+      if (!bgMusic) return;
+      
+      if (isPlaying) {
+        bgMusic.pause();
+        if (musicBtn) musicBtn.classList.remove('playing');
+      } else {
+        if (!musicStarted) {
+          bgMusic.volume = 0;
+          bgMusic.play().then(() => {
+            fadeInMusic();
+            musicStarted = true;
+          }).catch(() => {});
+        } else {
+          bgMusic.play();
+        }
+        if (musicBtn) musicBtn.classList.add('playing');
+      }
+      isPlaying = !isPlaying;
+      localStorage.setItem('yenz_music_playing', isPlaying);
+    }
+    
+    function startMusic() {
+      if (!bgMusic || musicStarted) return;
+      
+      bgMusic.volume = 0;
+      bgMusic.play().then(() => {
+        fadeInMusic();
+        musicStarted = true;
+        isPlaying = true;
+        if (musicBtn) musicBtn.classList.add('playing');
+        localStorage.setItem('yenz_music_playing', 'true');
+      }).catch(() => {});
+    }
+    
+    // Make toggleMusic available globally
+    window.toggleMusic = toggleMusic;
+    window.startMusic = startMusic;
+    
+    // ====== INTRO ANIMATION ======
+    const intro = document.getElementById('intro');
+    
+    if (intro) {
+      let introClicked = false;
+      
+      // Create stars
+      function createStars() {
+        const starsLayer = document.getElementById('starsLayer');
+        if (!starsLayer) return;
+        
+        for (let i = 0; i < 100; i++) {
+          const star = document.createElement('div');
+          star.className = 'star';
+          star.style.left = Math.random() * 100 + '%';
+          star.style.top = Math.random() * 100 + '%';
+          star.style.width = (1 + Math.random() * 2) + 'px';
+          star.style.height = star.style.width;
+          star.style.setProperty('--dur', (2 + Math.random() * 3) + 's');
+          star.style.setProperty('--del', Math.random() * 3 + 's');
+          starsLayer.appendChild(star);
+        }
+      }
+      
+      createStars();
+      
+      // Create bloom effect
+      function createBloom(x, y) {
+        for (let i = 0; i < 5; i++) {
+          const ring = document.createElement('div');
+          ring.className = 'bloom-ring';
+          ring.style.left = x + 'px';
+          ring.style.top = y + 'px';
+          ring.style.animation = `bloomExpand 1.8s ease-out ${i * 0.15}s forwards`;
+          intro.appendChild(ring);
+        }
+      }
+      
+      // Intro click handler
+      intro.addEventListener('click', function(e) {
+        if (introClicked || e.target.classList.contains('skip-btn')) return;
+        introClicked = true;
+        
+        startMusic();
+        createBloom(e.clientX, e.clientY);
+        
+        const introCenter = document.getElementById('introCenter');
+        const introSlogan = document.getElementById('introSlogan');
+        const circleExpand = document.getElementById('circleExpand');
+        const mainSite = document.getElementById('main-site');
+        
+        // Fade out center
+        if (introCenter) {
+          introCenter.style.transition = 'opacity 0.8s ease';
+          introCenter.style.opacity = '0';
+        }
+        
+        // Show slogan
+        setTimeout(() => {
+          if (introSlogan) {
+            introSlogan.style.transition = 'opacity 1.5s ease';
+            introSlogan.style.opacity = '1';
+          }
+        }, 600);
+        
+        // Expand circle and transition
+        setTimeout(() => {
+          if (introSlogan) {
+            introSlogan.style.transition = 'opacity 0.8s ease';
+            introSlogan.style.opacity = '0';
+          }
+          
+          if (circleExpand) {
+            circleExpand.style.opacity = '1';
+            circleExpand.style.transition = 'width 2s cubic-bezier(0.4,0,0.2,1), height 2s cubic-bezier(0.4,0,0.2,1)';
+            setTimeout(() => {
+              const max = Math.max(window.innerWidth, window.innerHeight) * 3;
+              circleExpand.style.width = max + 'px';
+              circleExpand.style.height = max + 'px';
+            }, 50);
+          }
+        }, 4500);
+        
+        // Show main site
+        setTimeout(() => {
+          intro.style.transition = 'opacity 0.5s ease';
+          intro.style.opacity = '0';
+          if (mainSite) {
+            mainSite.classList.add('visible');
+            mainSite.style.opacity = '1';
+          }
+        }, 6000);
+        
+        setTimeout(() => {
+          intro.style.display = 'none';
+        }, 6500);
+      });
+    }
+    
+    // Skip intro function
+    window.skipIntro = function() {
+      const intro = document.getElementById('intro');
+      const mainSite = document.getElementById('main-site');
+      
+      if (intro) {
+        intro.style.transition = 'opacity 0.4s ease';
+        intro.style.opacity = '0';
+        setTimeout(() => {
+          intro.style.display = 'none';
+          if (mainSite) {
+            mainSite.classList.add('visible');
+            mainSite.style.opacity = '1';
+          }
+        }, 400);
+      }
+      
+      startMusic();
+    };
+    
+    // ====== SCROLL REVEAL ======
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    revealElements.forEach(el => revealObserver.observe(el));
+  </script>
+  
+  <style is:global>
+    @import '/src/styles/global.css';
+  </style>
+</body>
+</html>

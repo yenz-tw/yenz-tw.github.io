@@ -1,0 +1,436 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="森知殿 Foredu | YENZ Design" description="當設計遇見文化；當品牌成為故事。台灣原生動物教育動畫計畫。">
+  <!-- Hero -->
+  <section class="foredu-hero">
+    <canvas class="foredu-canvas" id="foreduCanvas"></canvas>
+    <div class="foredu-hero-content">
+      <span class="foredu-label">SPECIAL PROJECT</span>
+      <h1 class="foredu-title">森知殿</h1>
+      <p class="foredu-title-en">Foredu</p>
+      <div class="foredu-divider"></div>
+      <p class="foredu-tagline">當設計遇見文化；當品牌成為故事。</p>
+    </div>
+  </section>
+  
+  <!-- Intro -->
+  <section class="section section-dark">
+    <div class="foredu-intro reveal">
+      <p class="intro-quote">
+        「一場以動畫重現藝術文化史的視覺詩篇」
+      </p>
+      <p class="intro-text">
+        森知殿是艷世設計的原創教育動畫計畫，以四隻台灣原生動物為主角，
+        透過精緻的動畫與溫暖的故事，帶領孩子們認識台灣的自然生態與文化之美。
+      </p>
+    </div>
+  </section>
+  
+  <!-- Characters -->
+  <section class="section section-gradient">
+    <div class="section-header reveal">
+      <span class="section-number">01</span>
+      <h2 class="section-title">CHARACTERS</h2>
+      <p class="section-subtitle">四位主角</p>
+    </div>
+    
+    <div class="characters-grid">
+      <div class="character-card reveal reveal-delay-1">
+        <div class="character-avatar" style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);">
+          <span class="character-icon">🐻</span>
+        </div>
+        <div class="character-info">
+          <h3 class="character-name">波士 Boss</h3>
+          <p class="character-species">台灣黑熊</p>
+          <p class="character-desc">森知殿的大家長，穩重可靠的領導者，帶領夥伴們一起探索知識的殿堂。</p>
+        </div>
+      </div>
+      
+      <div class="character-card reveal reveal-delay-2">
+        <div class="character-avatar" style="background: linear-gradient(135deg, #8B4513 0%, #654321 100%);">
+          <span class="character-icon">🦌</span>
+        </div>
+        <div class="character-info">
+          <h3 class="character-name">摩莎 Mosa</h3>
+          <p class="character-species">台灣梅花鹿</p>
+          <p class="character-desc">溫柔優雅的知識傳遞者，擅長用故事的方式讓學習變得有趣。</p>
+        </div>
+      </div>
+      
+      <div class="character-card reveal reveal-delay-3">
+        <div class="character-avatar" style="background: linear-gradient(135deg, #DEB887 0%, #D2691E 100%);">
+          <span class="character-icon">🐆</span>
+        </div>
+        <div class="character-info">
+          <h3 class="character-name">石寶 Bao</h3>
+          <p class="character-species">石虎</p>
+          <p class="character-desc">活潑好奇的探險家，總是第一個發現新事物，帶著滿滿的好奇心。</p>
+        </div>
+      </div>
+      
+      <div class="character-card reveal reveal-delay-4">
+        <div class="character-avatar" style="background: linear-gradient(135deg, #4169E1 0%, #1E3A8A 100%);">
+          <span class="character-icon">🐦</span>
+        </div>
+        <div class="character-info">
+          <h3 class="character-name">巧比 Chabi</h3>
+          <p class="character-species">台灣藍鵲</p>
+          <p class="character-desc">聰明機靈的小夥伴，擁有絕佳的記憶力，是團隊的智囊。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Vision -->
+  <section class="section section-dark">
+    <div class="section-header reveal">
+      <span class="section-number">02</span>
+      <h2 class="section-title">VISION</h2>
+      <p class="section-subtitle">計畫願景</p>
+    </div>
+    
+    <div class="vision-content reveal">
+      <div class="vision-item">
+        <div class="vision-icon">◇</div>
+        <h3>文化傳承</h3>
+        <p>透過動畫的形式，讓台灣的自然生態與文化故事傳遞給下一代。</p>
+      </div>
+      
+      <div class="vision-item">
+        <div class="vision-icon">◈</div>
+        <h3>教育創新</h3>
+        <p>以有趣、溫暖的方式呈現知識，讓學習成為一場美好的冒險。</p>
+      </div>
+      
+      <div class="vision-item">
+        <div class="vision-icon">◎</div>
+        <h3>生態意識</h3>
+        <p>培養孩子們對台灣原生物種的認識與保育意識。</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 class="cta-title reveal">探索更多森知殿的故事</h2>
+    <a href="https://www.youtube.com/@foredu" target="_blank" class="btn reveal reveal-delay-1">
+      VISIT YOUTUBE CHANNEL
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Foredu Hero */
+  .foredu-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(180deg, #1a4d3a 0%, #0d3d2e 50%, var(--forest-darkest) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .foredu-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .foredu-hero-content {
+    position: relative;
+    z-index: 10;
+    padding: 0 2rem;
+  }
+  
+  .foredu-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    display: block;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.3s forwards;
+  }
+  
+  .foredu-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.3em;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.5s forwards;
+  }
+  
+  .foredu-title-en {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--gold);
+    letter-spacing: 0.5em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.7s forwards;
+  }
+  
+  .foredu-divider {
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+    animation: expandLine 1.5s ease 1s forwards;
+  }
+  
+  .foredu-tagline {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 300;
+    color: var(--gold-light);
+    letter-spacing: 0.15em;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.2s forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes expandLine {
+    from { width: 0; }
+    to { width: 120px; }
+  }
+  
+  /* Intro */
+  .foredu-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .intro-quote {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+  
+  .intro-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 2.2;
+  }
+  
+  /* Characters */
+  .characters-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .character-card {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(201, 169, 98, 0.03);
+    border: 1px solid rgba(201, 169, 98, 0.1);
+    transition: all 0.5s ease;
+  }
+  
+  .character-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-10px);
+  }
+  
+  .character-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(201, 169, 98, 0.3);
+  }
+  
+  .character-icon {
+    font-size: 3rem;
+  }
+  
+  .character-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  
+  .character-species {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+  
+  .character-desc {
+    font-size: 0.9rem;
+    color: var(--gold-light);
+    line-height: 1.8;
+    opacity: 0.8;
+  }
+  
+  /* Vision */
+  .vision-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .vision-item {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(201, 169, 98, 0.03);
+    border: 1px solid rgba(201, 169, 98, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .vision-item:hover {
+    border-color: var(--gold);
+  }
+  
+  .vision-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  
+  .vision-item h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  
+  .vision-item p {
+    font-size: 0.95rem;
+    color: var(--gold-light);
+    line-height: 1.8;
+    opacity: 0.8;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .characters-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .vision-content {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .characters-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Foredu page particle animation (leaf-like)
+  const foreduCanvas = document.getElementById('foreduCanvas') as HTMLCanvasElement;
+  if (foreduCanvas) {
+    const ctx = foreduCanvas.getContext('2d');
+    let leaves: Array<{x: number, y: number, size: number, rotation: number, speedX: number, speedY: number, rotationSpeed: number, opacity: number}> = [];
+    
+    function resizeCanvas() {
+      foreduCanvas.width = window.innerWidth;
+      foreduCanvas.height = window.innerHeight;
+    }
+    
+    function createLeaves() {
+      leaves = [];
+      const count = 30;
+      
+      for (let i = 0; i < count; i++) {
+        leaves.push({
+          x: Math.random() * foreduCanvas.width,
+          y: Math.random() * foreduCanvas.height,
+          size: Math.random() * 15 + 5,
+          rotation: Math.random() * Math.PI * 2,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: Math.random() * 0.3 + 0.1,
+          rotationSpeed: (Math.random() - 0.5) * 0.02,
+          opacity: Math.random() * 0.3 + 0.1
+        });
+      }
+    }
+    
+    function drawLeaf(x: number, y: number, size: number, rotation: number, opacity: number) {
+      if (!ctx) return;
+      
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      ctx.globalAlpha = opacity;
+      
+      ctx.beginPath();
+      ctx.moveTo(0, -size);
+      ctx.bezierCurveTo(size * 0.5, -size * 0.5, size * 0.5, size * 0.5, 0, size);
+      ctx.bezierCurveTo(-size * 0.5, size * 0.5, -size * 0.5, -size * 0.5, 0, -size);
+      ctx.fillStyle = 'rgba(201, 169, 98, 0.6)';
+      ctx.fill();
+      
+      ctx.restore();
+    }
+    
+    function animateLeaves() {
+      if (!ctx) return;
+      
+      ctx.clearRect(0, 0, foreduCanvas.width, foreduCanvas.height);
+      
+      leaves.forEach(leaf => {
+        leaf.x += leaf.speedX;
+        leaf.y += leaf.speedY;
+        leaf.rotation += leaf.rotationSpeed;
+        
+        if (leaf.y > foreduCanvas.height + leaf.size) {
+          leaf.y = -leaf.size;
+          leaf.x = Math.random() * foreduCanvas.width;
+        }
+        
+        if (leaf.x < -leaf.size) leaf.x = foreduCanvas.width + leaf.size;
+        if (leaf.x > foreduCanvas.width + leaf.size) leaf.x = -leaf.size;
+        
+        drawLeaf(leaf.x, leaf.y, leaf.size, leaf.rotation, leaf.opacity);
+      });
+      
+      requestAnimationFrame(animateLeaves);
+    }
+    
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createLeaves();
+    });
+    
+    resizeCanvas();
+    createLeaves();
+    animateLeaves();
+  }
+</script>

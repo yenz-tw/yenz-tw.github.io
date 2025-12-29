@@ -1,0 +1,351 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="聯繫我們 | YENZ Design" description="與艷世設計聯繫，開始您的品牌之旅。">
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="page-hero-label">CONTACT</span>
+      <h1 class="page-hero-title">聯繫我們</h1>
+      <p class="page-hero-subtitle">Start Your Journey</p>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section class="section section-dark">
+    <div class="contact-wrapper">
+      <div class="contact-info reveal">
+        <h2 class="contact-title">精準溝通，雕琢非凡</h2>
+        <p class="contact-desc">
+          啟動一次策略對談，是我們為您擘劃品牌宏圖的第一步。
+          艷世以卓越工藝與獨到視野，將您的願景轉化為極具震撼力的視覺語言。
+          我們提供免費諮詢，以專業服務與您共同激發創意，共塑雋永的品牌印記。
+        </p>
+        
+        <div class="contact-divider"></div>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-label">EMAIL</span>
+            <a href="mailto:yenzdesignstudio@gmail.com" class="contact-value">yenzdesignstudio@gmail.com</a>
+          </div>
+          
+          <div class="contact-item">
+            <span class="contact-label">LINE</span>
+            <a href="https://lin.ee/aQny7rA" target="_blank" class="contact-value contact-line">
+              加入官方帳號 →
+            </a>
+          </div>
+          
+          <div class="contact-item">
+            <span class="contact-label">LOCATION</span>
+            <span class="contact-value">臺北市信義區</span>
+          </div>
+          
+          <div class="contact-item">
+            <span class="contact-label">WORKING HOURS</span>
+            <span class="contact-value">週一至週五 10:00 - 18:00</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-cta reveal reveal-delay-1">
+        <div class="cta-box">
+          <div class="cta-icon">◈</div>
+          <h3 class="cta-box-title">開始免費諮詢</h3>
+          <p class="cta-box-desc">
+            透過 LINE 與我們聯繫，我們將在 24 小時內回覆您。
+          </p>
+          <a href="https://lin.ee/aQny7rA" target="_blank" class="btn btn-gold">
+            LINE 諮詢
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Company Info -->
+  <section class="section section-gradient">
+    <div class="company-section reveal">
+      <h2 class="company-section-title">公司資訊</h2>
+      <div class="company-card">
+        <div class="company-logo">YENZ</div>
+        <div class="company-name">艷世設計有限公司</div>
+        <div class="company-name-en">YENZ Design Studio Co., Ltd.</div>
+        <div class="company-details-grid">
+          <div class="company-detail-item">
+            <span class="detail-label">統一編號</span>
+            <span class="detail-value">83515285</span>
+          </div>
+          <div class="company-detail-item">
+            <span class="detail-label">代表人</span>
+            <span class="detail-value">瞿長緣</span>
+          </div>
+          <div class="company-detail-item">
+            <span class="detail-label">設立日期</span>
+            <span class="detail-value">民國 109 年 3 月</span>
+          </div>
+          <div class="company-detail-item">
+            <span class="detail-label">登記機關</span>
+            <span class="detail-value">臺北市政府</span>
+          </div>
+        </div>
+        <div class="company-address">
+          <span class="detail-label">公司地址</span>
+          <span class="detail-value">臺北市信義區忠孝東路五段482號15樓之4</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(180deg, var(--forest-darkest) 0%, var(--forest-dark) 100%);
+    padding-top: 100px;
+  }
+  
+  .page-hero-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  
+  .page-hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+  }
+  
+  .page-hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--gold-light);
+    letter-spacing: 0.15em;
+  }
+  
+  /* Contact Wrapper */
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  
+  .contact-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 2;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 2rem;
+    opacity: 0.5;
+  }
+  
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .contact-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+  }
+  
+  .contact-value {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a.contact-value:hover {
+    color: var(--gold);
+  }
+  
+  .contact-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* CTA Box */
+  .cta-box {
+    background: rgba(201, 169, 98, 0.05);
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    padding: 3rem;
+    text-align: center;
+  }
+  
+  .cta-icon {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-box-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  
+  .cta-box-desc {
+    font-size: 0.95rem;
+    color: var(--gold-light);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-gold {
+    background: var(--gold);
+    color: var(--forest-darkest);
+    border-color: var(--gold);
+  }
+  
+  .btn-gold:hover {
+    background: var(--gold-light);
+  }
+  
+  .btn-gold::before {
+    display: none;
+  }
+  
+  /* Company Section */
+  .company-section {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .company-section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 3rem;
+  }
+  
+  .company-card {
+    background: rgba(201, 169, 98, 0.03);
+    border: 1px solid rgba(201, 169, 98, 0.15);
+    padding: 4rem;
+  }
+  
+  .company-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+  }
+  
+  .company-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  
+  .company-name-en {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 3rem;
+  }
+  
+  .company-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .company-detail-item {
+    text-align: left;
+    padding: 1rem;
+    background: rgba(201, 169, 98, 0.03);
+  }
+  
+  .company-address {
+    text-align: left;
+    padding: 1rem;
+    background: rgba(201, 169, 98, 0.03);
+  }
+  
+  .detail-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+  
+  .detail-value {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.95rem;
+    color: var(--gold-light);
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .contact-wrapper {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .company-details-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .company-card {
+      padding: 2rem;
+    }
+  }
+</style>
