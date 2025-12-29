@@ -36,7 +36,7 @@ a, button { cursor: none; }
 h1, h2, h3, h4, h5, h6 { font-family: 'Cinzel', serif; font-weight: 400; letter-spacing: 0.1em; }
 
 /* Cursor */
-.cursor-glow { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,169,98,0.12) 0%, transparent 55%); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); }
+.cursor-glow { position: fixed; width: 200px; height: 200px; background: radial-gradient(circle, rgba(201,169,98,0.18) 0%, rgba(201,169,98,0.05) 40%, transparent 60%); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); }
 .cursor-core { position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 10001; box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold), 0 0 40px var(--gold-glow); transform: translate(-50%, -50%); transition: all 0.2s ease; }
 .cursor-core.hover { width: 50px; height: 50px; background: transparent; border: 1px solid var(--gold); }
 .meteor-trail { position: fixed; pointer-events: none; z-index: 9999; border-radius: 50%; background: var(--gold); }

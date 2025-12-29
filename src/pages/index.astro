@@ -22,13 +22,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="video-section">
     <div class="video-container">
       <div class="video-title">
-        <h2>2025 品牌形象影片</h2>
-        <p>《島嶼心弦，雋永之詩》</p>
+        <p class="video-label">BRAND FILM</p>
+        <h2>島嶼心弦，雋永之詩</h2>
+        <p class="video-subtitle">以台灣之美，詮釋品牌永恆價值</p>
       </div>
       <div class="video-wrapper">
         <iframe 
           src="https://www.youtube.com/embed/Ido7ko6CGnE?si=lgfPuuc_btdmZuNt" 
-          title="艷世設計 YENZ｜2025 品牌形象影片《島嶼心弦，雋永之詩》" 
+          title="艷世設計 YENZ｜品牌形象影片《島嶼心弦，雋永之詩》" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           referrerpolicy="strict-origin-when-cross-origin" 
@@ -187,18 +188,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
   
-  <!-- Founder Section -->
+  <!-- Founder Section - 使用真實照片 -->
   <section class="section section-gradient">
     <div class="founder-section reveal">
       <div class="founder-image">
-        <div class="founder-image-placeholder">
-          <span>長</span>
-        </div>
+        <img src="/images/founder.jpg" alt="瞿長緣 Chang-Yuan Qu" class="founder-photo" />
       </div>
       
       <div class="founder-content">
         <p class="founder-quote">
-          2025年，我們始終以專業與熱忱，為客戶打造獨一無二的設計，共創品牌價值。未來，我們將持續精進，追求卓越。此志不渝，永矢弗諼。
+          我們始終以專業與熱忱，為客戶打造獨一無二的設計，共創品牌價值。未來，我們將持續精進，追求卓越。此志不渝，永矢弗諼。
         </p>
         <p class="founder-name">瞿長緣 Chang-Yuan Qu</p>
         <p class="founder-title">Founder & Creative Director</p>
@@ -245,16 +244,93 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
   
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <h2 class="cta-title reveal">
-      讓我們為您編織<br>獨一無二的品牌故事
-    </h2>
-    <a href="/contact" class="btn reveal reveal-delay-1">START YOUR JOURNEY</a>
+  <!-- CTA Section - 更精緻版本 -->
+  <section class="cta-section-enhanced">
+    <div class="cta-deco-circles">
+      <div class="cta-circle cta-circle-1"></div>
+      <div class="cta-circle cta-circle-2"></div>
+      <div class="cta-circle cta-circle-3"></div>
+    </div>
+    
+    <div class="cta-content reveal">
+      <span class="cta-label">BEGIN YOUR STORY</span>
+      <h2 class="cta-title-enhanced">
+        讓我們為您編織<br>獨一無二的品牌故事
+      </h2>
+      <p class="cta-desc">
+        每一個偉大的品牌，都始於一次對話。<br>
+        從願景到現實，從概念到經典，艷世與您攜手，共創雋永。
+      </p>
+      <div class="cta-divider"></div>
+      <p class="cta-sub">
+        免費諮詢 · 專業建議 · 量身定制
+      </p>
+      <a href="/contact" class="btn cta-btn">START YOUR JOURNEY</a>
+    </div>
+    
+    <div class="cta-particles" id="ctaParticles"></div>
   </section>
 </BaseLayout>
 
 <style>
+  /* Video Section Enhanced */
+  .video-section {
+    padding: 6rem 4rem;
+    background: var(--cream);
+  }
+  
+  .video-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .video-title {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .video-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 1rem;
+  }
+  
+  .video-title h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 400;
+    color: var(--forest-dark);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+  
+  .video-subtitle {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--forest);
+    letter-spacing: 0.1em;
+  }
+  
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border: 1px solid rgba(13, 61, 46, 0.1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  }
+  
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
   /* Brand Intro */
   .brand-intro {
     max-width: 900px;
@@ -311,23 +387,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     animation: knotRotate 30s linear infinite;
   }
   
-  .knot-circle-outer {
-    width: 250px;
-    height: 250px;
-  }
-  
-  .knot-circle-middle {
-    width: 200px;
-    height: 200px;
-    animation-direction: reverse;
-    animation-duration: 25s;
-  }
-  
-  .knot-circle-inner {
-    width: 150px;
-    height: 150px;
-    animation-duration: 20s;
-  }
+  .knot-circle-outer { width: 250px; height: 250px; }
+  .knot-circle-middle { width: 200px; height: 200px; animation-direction: reverse; animation-duration: 25s; }
+  .knot-circle-inner { width: 150px; height: 150px; animation-duration: 20s; }
   
   @keyframes knotRotate {
     from { transform: rotate(0deg); }
@@ -400,7 +462,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     opacity: 0.8;
   }
   
-  /* Services Intro */
+  /* Services */
   .services-intro {
     text-align: center;
     font-family: 'Noto Serif TC', serif;
@@ -414,7 +476,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-right: auto;
   }
   
-  /* Promise Intro */
   .promise-intro {
     text-align: center;
     font-family: 'Noto Serif TC', serif;
@@ -428,10 +489,123 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-right: auto;
   }
   
-  /* Section CTA */
   .section-cta {
     text-align: center;
     margin-top: 4rem;
+  }
+  
+  /* Founder Photo */
+  .founder-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    aspect-ratio: 3/4;
+    border: 1px solid rgba(201, 169, 98, 0.2);
+  }
+  
+  /* Enhanced CTA Section */
+  .cta-section-enhanced {
+    padding: 12rem 4rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--forest-darkest) 0%, var(--forest-dark) 50%, var(--forest-darkest) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cta-deco-circles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .cta-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(201, 169, 98, 0.08);
+    border-radius: 50%;
+    animation: ctaCircleRotate 40s linear infinite;
+  }
+  
+  .cta-circle-1 { width: 400px; height: 400px; }
+  .cta-circle-2 { width: 600px; height: 600px; animation-direction: reverse; animation-duration: 50s; }
+  .cta-circle-3 { width: 800px; height: 800px; animation-duration: 60s; }
+  
+  @keyframes ctaCircleRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  
+  .cta-content {
+    position: relative;
+    z-index: 10;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .cta-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    display: block;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-title-enhanced {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 0.15em;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    line-height: 2;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+    opacity: 0.5;
+  }
+  
+  .cta-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold-light);
+    letter-spacing: 0.2em;
+    margin-bottom: 3rem;
+    opacity: 0.7;
+  }
+  
+  .cta-btn {
+    padding: 1.2rem 3rem;
+    font-size: 0.85rem;
+  }
+  
+  .cta-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
   }
   
   /* Responsive */
@@ -446,11 +620,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       max-width: 500px;
       margin: 0 auto;
     }
+    
+    .founder-section {
+      grid-template-columns: 1fr !important;
+      gap: 3rem;
+    }
+    
+    .founder-image {
+      max-width: 350px;
+      margin: 0 auto;
+    }
   }
 </style>
 
 <script>
-  // Hero particle animation
+  // Hero particles
   const heroCanvas = document.getElementById('heroCanvas') as HTMLCanvasElement;
   if (heroCanvas) {
     const ctx = heroCanvas.getContext('2d');
@@ -495,7 +679,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         ctx.fill();
       });
       
-      // Draw connections
+      // Connections
       particles.forEach((p1, i) => {
         particles.slice(i + 1).forEach(p2 => {
           const dx = p1.x - p2.x;
@@ -519,5 +703,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     resizeCanvas();
     createParticles();
     animateParticles();
+  }
+  
+  // CTA floating particles
+  const ctaParticles = document.getElementById('ctaParticles');
+  if (ctaParticles) {
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.style.cssText = `
+        position: absolute;
+        width: ${2 + Math.random() * 3}px;
+        height: ${2 + Math.random() * 3}px;
+        background: rgba(201, 169, 98, ${0.2 + Math.random() * 0.3});
+        border-radius: 50%;
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation: ctaFloat ${5 + Math.random() * 5}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 5}s;
+      `;
+      ctaParticles.appendChild(particle);
+    }
+    
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ctaFloat {
+        0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+        50% { transform: translateY(-30px) translateX(10px); opacity: 0.7; }
+      }
+    `;
+    document.head.appendChild(style);
   }
 </script>

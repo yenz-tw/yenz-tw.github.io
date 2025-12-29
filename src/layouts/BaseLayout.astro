@@ -42,7 +42,6 @@ const currentPath = Astro.url.pathname;
       <div class="nebula nebula-1"></div>
       <div class="nebula nebula-2"></div>
       
-      <!-- 裝飾圓圈 -->
       <div class="intro-deco-circles">
         <div class="intro-circle intro-circle-1"></div>
         <div class="intro-circle intro-circle-2"></div>
@@ -74,7 +73,7 @@ const currentPath = Astro.url.pathname;
         <a href="/services" class={currentPath === '/services' || currentPath === '/services/' ? 'active' : ''}>SERVICES</a>
         <a href="/works" class={currentPath === '/works' || currentPath === '/works/' ? 'active' : ''}>WORKS</a>
         <a href="/process" class={currentPath === '/process' || currentPath === '/process/' ? 'active' : ''}>PROCESS</a>
-        <a href="/projects" class={currentPath.startsWith('/projects') ? 'active' : ''}>PROJECTS</a>
+        <a href="/projects" class={currentPath.startsWith('/projects') ? 'active' : ''}>CSR</a>
         <a href="/contact" class={currentPath === '/contact' || currentPath === '/contact/' ? 'active' : ''}>CONTACT</a>
       </nav>
     </header>
@@ -117,7 +116,7 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2016 - 2025 YENZ Design Studio. All Rights Reserved.</p>
+        <p>© 2016 - 2026 YENZ Design Studio. All Rights Reserved.</p>
         <div class="footer-affiliates">
           Part of YENZ Group:
           <a href="https://thetensy.com" target="_blank">Tensy</a>
@@ -142,16 +141,21 @@ const currentPath = Astro.url.pathname;
   </audio>
   
   <script is:inline>
-    // Cursor
+    // ====== CURSOR - 修正版 ======
     const cursorGlow = document.getElementById('cursorGlow');
     const cursorCore = document.getElementById('cursorCore');
-    let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
     let trails = [];
     
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      if (Math.random() > 0.7) createTrail(mouseX, mouseY);
+      
+      // 流星尾跡
+      if (Math.random() > 0.6) {
+        createTrail(mouseX, mouseY);
+      }
     });
     
     function createTrail(x, y) {
@@ -159,35 +163,57 @@ const currentPath = Astro.url.pathname;
       trail.className = 'meteor-trail';
       trail.style.left = x + 'px';
       trail.style.top = y + 'px';
-      trail.style.width = (3 + Math.random() * 3) + 'px';
-      trail.style.height = trail.style.width;
-      trail.style.opacity = 0.6;
+      const size = 2 + Math.random() * 2;
+      trail.style.width = size + 'px';
+      trail.style.height = size + 'px';
+      trail.style.opacity = '0.5';
       document.body.appendChild(trail);
       trails.push({ el: trail, life: 1 });
     }
     
     function animateCursor() {
-      glowX += (mouseX - glowX) * 0.08;
-      glowY += (mouseY - glowY) * 0.08;
-      if (cursorGlow) { cursorGlow.style.left = glowX + 'px'; cursorGlow.style.top = glowY + 'px'; }
-      if (cursorCore) { cursorCore.style.left = mouseX + 'px'; cursorCore.style.top = mouseY + 'px'; }
+      // 光暈跟隨 - 更快的跟隨速度
+      glowX += (mouseX - glowX) * 0.15;
+      glowY += (mouseY - glowY) * 0.15;
+      
+      if (cursorGlow) {
+        cursorGlow.style.left = glowX + 'px';
+        cursorGlow.style.top = glowY + 'px';
+      }
+      
+      // 核心直接跟隨滑鼠
+      if (cursorCore) {
+        cursorCore.style.left = mouseX + 'px';
+        cursorCore.style.top = mouseY + 'px';
+      }
+      
+      // 尾跡動畫
       trails = trails.filter(t => {
-        t.life -= 0.03;
-        t.el.style.opacity = t.life * 0.6;
+        t.life -= 0.04;
+        t.el.style.opacity = String(t.life * 0.5);
         t.el.style.transform = `scale(${t.life})`;
-        if (t.life <= 0) { t.el.remove(); return false; }
+        if (t.life <= 0) {
+          t.el.remove();
+          return false;
+        }
         return true;
       });
+      
       requestAnimationFrame(animateCursor);
     }
     animateCursor();
     
+    // Hover 效果
     document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => { if (cursorCore) cursorCore.classList.add('hover'); });
-      el.addEventListener('mouseleave', () => { if (cursorCore) cursorCore.classList.remove('hover'); });
+      el.addEventListener('mouseenter', () => {
+        if (cursorCore) cursorCore.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        if (cursorCore) cursorCore.classList.remove('hover');
+      });
     });
     
-    // Reading Bar
+    // ====== READING BAR ======
     const readingBar = document.getElementById('readingBar');
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
@@ -196,18 +222,23 @@ const currentPath = Astro.url.pathname;
       if (readingBar) readingBar.style.width = progress + '%';
     });
     
-    // Header
+    // ====== HEADER ======
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
       if (header) header.classList.toggle('scrolled', window.scrollY > 100);
     });
     
-    // Orbs
+    // ====== ORBS ======
     const orbCanvas = document.getElementById('orbCanvas');
     if (orbCanvas) {
       const oCtx = orbCanvas.getContext('2d');
       let orbs = [];
-      function resizeOrb() { orbCanvas.width = window.innerWidth; orbCanvas.height = window.innerHeight; }
+      
+      function resizeOrb() {
+        orbCanvas.width = window.innerWidth;
+        orbCanvas.height = window.innerHeight;
+      }
+      
       class Orb {
         constructor() {
           this.x = Math.random() * orbCanvas.width;
@@ -219,7 +250,9 @@ const currentPath = Astro.url.pathname;
           this.gold = Math.random() < 0.35;
         }
         update() {
-          this.x += this.vx; this.y += this.vy; this.pulse += 0.006;
+          this.x += this.vx;
+          this.y += this.vy;
+          this.pulse += 0.006;
           if (this.x < -this.size) this.x = orbCanvas.width + this.size;
           if (this.x > orbCanvas.width + this.size) this.x = -this.size;
           if (this.y < -this.size) this.y = orbCanvas.height + this.size;
@@ -228,33 +261,50 @@ const currentPath = Astro.url.pathname;
         draw() {
           const op = 0.025 + Math.sin(this.pulse) * 0.015;
           const grad = oCtx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-          if (this.gold) { grad.addColorStop(0, `rgba(201,169,98,${op * 1.8})`); grad.addColorStop(1, 'rgba(201,169,98,0)'); }
-          else { grad.addColorStop(0, `rgba(13,61,46,${op})`); grad.addColorStop(1, 'rgba(13,61,46,0)'); }
+          if (this.gold) {
+            grad.addColorStop(0, `rgba(201,169,98,${op * 1.8})`);
+            grad.addColorStop(1, 'rgba(201,169,98,0)');
+          } else {
+            grad.addColorStop(0, `rgba(13,61,46,${op})`);
+            grad.addColorStop(1, 'rgba(13,61,46,0)');
+          }
           oCtx.fillStyle = grad;
           oCtx.beginPath();
           oCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
           oCtx.fill();
         }
       }
-      function initOrbs() { orbs = []; for (let i = 0; i < 15; i++) orbs.push(new Orb()); }
+      
+      function initOrbs() {
+        orbs = [];
+        for (let i = 0; i < 15; i++) orbs.push(new Orb());
+      }
+      
       function animateOrbs() {
         oCtx.clearRect(0, 0, orbCanvas.width, orbCanvas.height);
         orbs.forEach(o => { o.update(); o.draw(); });
         requestAnimationFrame(animateOrbs);
       }
+      
       window.addEventListener('resize', resizeOrb);
-      resizeOrb(); initOrbs(); animateOrbs();
+      resizeOrb();
+      initOrbs();
+      animateOrbs();
     }
     
-    // Music - 音量 15%
+    // ====== MUSIC - 15% 音量 ======
     const bgMusic = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicBtn');
-    let isPlaying = false, musicStarted = false;
-    const TARGET_VOLUME = 0.15; // 15% 音量
+    let isPlaying = false;
+    let musicStarted = false;
+    const TARGET_VOLUME = 0.15;
     
     const savedPosition = localStorage.getItem('yenz_music_position');
     const savedPlaying = localStorage.getItem('yenz_music_playing');
-    if (bgMusic && savedPosition) bgMusic.currentTime = parseFloat(savedPosition);
+    
+    if (bgMusic && savedPosition) {
+      bgMusic.currentTime = parseFloat(savedPosition);
+    }
     
     window.addEventListener('beforeunload', () => {
       if (bgMusic) {
@@ -268,7 +318,8 @@ const currentPath = Astro.url.pathname;
         if (!musicStarted && savedPlaying === 'true') {
           bgMusic.volume = TARGET_VOLUME;
           bgMusic.play().catch(() => {});
-          musicStarted = true; isPlaying = true;
+          musicStarted = true;
+          isPlaying = true;
           if (musicBtn) musicBtn.classList.add('playing');
         }
         document.removeEventListener('click', resumeMusic);
@@ -278,8 +329,11 @@ const currentPath = Astro.url.pathname;
     function fadeInMusic() {
       let v = 0;
       const fade = setInterval(() => {
-        v += 0.003; // 更慢的淡入
-        if (v >= TARGET_VOLUME) { v = TARGET_VOLUME; clearInterval(fade); }
+        v += 0.003;
+        if (v >= TARGET_VOLUME) {
+          v = TARGET_VOLUME;
+          clearInterval(fade);
+        }
         if (bgMusic) bgMusic.volume = v;
       }, 50);
     }
@@ -292,8 +346,13 @@ const currentPath = Astro.url.pathname;
       } else {
         if (!musicStarted) {
           bgMusic.volume = 0;
-          bgMusic.play().then(() => { fadeInMusic(); musicStarted = true; }).catch(() => {});
-        } else { bgMusic.play(); }
+          bgMusic.play().then(() => {
+            fadeInMusic();
+            musicStarted = true;
+          }).catch(() => {});
+        } else {
+          bgMusic.play();
+        }
         if (musicBtn) musicBtn.classList.add('playing');
       }
       isPlaying = !isPlaying;
@@ -305,7 +364,8 @@ const currentPath = Astro.url.pathname;
       bgMusic.volume = 0;
       bgMusic.play().then(() => {
         fadeInMusic();
-        musicStarted = true; isPlaying = true;
+        musicStarted = true;
+        isPlaying = true;
         if (musicBtn) musicBtn.classList.add('playing');
         localStorage.setItem('yenz_music_playing', 'true');
       }).catch(() => {});
@@ -314,11 +374,15 @@ const currentPath = Astro.url.pathname;
     window.toggleMusic = toggleMusic;
     window.startMusic = startMusic;
     
-    // Intro
+    // ====== INTRO - 修正水波從點擊位置展開 ======
     const intro = document.getElementById('intro');
+    
     if (intro) {
       let introClicked = false;
+      let clickX = window.innerWidth / 2;
+      let clickY = window.innerHeight / 2;
       
+      // 建立星星
       function createStars() {
         const starsLayer = document.getElementById('starsLayer');
         if (!starsLayer) return;
@@ -336,12 +400,14 @@ const currentPath = Astro.url.pathname;
       }
       createStars();
       
+      // 建立水波效果 - 從點擊位置
       function createBloom(x, y) {
         for (let i = 0; i < 5; i++) {
           const ring = document.createElement('div');
           ring.className = 'bloom-ring';
           ring.style.left = x + 'px';
           ring.style.top = y + 'px';
+          ring.style.transform = 'translate(-50%, -50%)';
           ring.style.animation = `bloomExpand 1.8s ease-out ${i * 0.15}s forwards`;
           intro.appendChild(ring);
         }
@@ -350,42 +416,100 @@ const currentPath = Astro.url.pathname;
       intro.addEventListener('click', function(e) {
         if (introClicked || e.target.classList.contains('skip-btn')) return;
         introClicked = true;
+        
+        // 記錄點擊位置
+        clickX = e.clientX;
+        clickY = e.clientY;
+        
         startMusic();
-        createBloom(e.clientX, e.clientY);
+        createBloom(clickX, clickY);
         
         const introCenter = document.getElementById('introCenter');
         const introSlogan = document.getElementById('introSlogan');
         const circleExpand = document.getElementById('circleExpand');
         const mainSite = document.getElementById('main-site');
         
-        if (introCenter) { introCenter.style.transition = 'opacity 0.8s ease'; introCenter.style.opacity = '0'; }
-        setTimeout(() => { if (introSlogan) { introSlogan.style.transition = 'opacity 1.5s ease'; introSlogan.style.opacity = '1'; } }, 600);
+        // 淡出中心內容
+        if (introCenter) {
+          introCenter.style.transition = 'opacity 0.8s ease';
+          introCenter.style.opacity = '0';
+        }
+        
+        // 顯示 Slogan
         setTimeout(() => {
-          if (introSlogan) { introSlogan.style.transition = 'opacity 0.8s ease'; introSlogan.style.opacity = '0'; }
+          if (introSlogan) {
+            introSlogan.style.transition = 'opacity 1.5s ease';
+            introSlogan.style.opacity = '1';
+          }
+        }, 600);
+        
+        // 圓圈展開 - 從點擊位置
+        setTimeout(() => {
+          if (introSlogan) {
+            introSlogan.style.transition = 'opacity 0.8s ease';
+            introSlogan.style.opacity = '0';
+          }
+          
           if (circleExpand) {
+            // 設定圓圈位置為點擊位置
+            circleExpand.style.left = clickX + 'px';
+            circleExpand.style.top = clickY + 'px';
+            circleExpand.style.transform = 'translate(-50%, -50%)';
             circleExpand.style.opacity = '1';
             circleExpand.style.transition = 'width 2s cubic-bezier(0.4,0,0.2,1), height 2s cubic-bezier(0.4,0,0.2,1)';
-            setTimeout(() => { const max = Math.max(window.innerWidth, window.innerHeight) * 3; circleExpand.style.width = max + 'px'; circleExpand.style.height = max + 'px'; }, 50);
+            
+            setTimeout(() => {
+              const max = Math.max(window.innerWidth, window.innerHeight) * 3;
+              circleExpand.style.width = max + 'px';
+              circleExpand.style.height = max + 'px';
+            }, 50);
           }
         }, 4500);
-        setTimeout(() => { intro.style.transition = 'opacity 0.5s ease'; intro.style.opacity = '0'; if (mainSite) { mainSite.classList.add('visible'); mainSite.style.opacity = '1'; } }, 6000);
-        setTimeout(() => { intro.style.display = 'none'; }, 6500);
+        
+        // 顯示主站
+        setTimeout(() => {
+          intro.style.transition = 'opacity 0.5s ease';
+          intro.style.opacity = '0';
+          if (mainSite) {
+            mainSite.classList.add('visible');
+            mainSite.style.opacity = '1';
+          }
+        }, 6000);
+        
+        setTimeout(() => {
+          intro.style.display = 'none';
+        }, 6500);
       });
     }
     
+    // Skip
     window.skipIntro = function() {
       const intro = document.getElementById('intro');
       const mainSite = document.getElementById('main-site');
-      if (intro) { intro.style.transition = 'opacity 0.4s ease'; intro.style.opacity = '0'; setTimeout(() => { intro.style.display = 'none'; if (mainSite) { mainSite.classList.add('visible'); mainSite.style.opacity = '1'; } }, 400); }
+      if (intro) {
+        intro.style.transition = 'opacity 0.4s ease';
+        intro.style.opacity = '0';
+        setTimeout(() => {
+          intro.style.display = 'none';
+          if (mainSite) {
+            mainSite.classList.add('visible');
+            mainSite.style.opacity = '1';
+          }
+        }, 400);
+      }
       startMusic();
     };
     
-    // Reveal
+    // ====== REVEAL ======
     const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
     revealElements.forEach(el => revealObserver.observe(el));
     
-    // Card Particles
+    // ====== CARD PARTICLES ======
     document.querySelectorAll('.service-card').forEach(card => {
       const particleContainer = document.createElement('div');
       particleContainer.className = 'card-particles';
@@ -393,7 +517,7 @@ const currentPath = Astro.url.pathname;
       card.appendChild(particleContainer);
       
       card.addEventListener('mouseenter', () => {
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 12; i++) {
           setTimeout(() => {
             const p = document.createElement('div');
             p.style.cssText = `position:absolute;width:4px;height:4px;background:#C9A962;border-radius:50%;left:${Math.random()*100}%;bottom:0;opacity:0;animation:particleFly 1.5s ease-out forwards;`;
@@ -404,7 +528,7 @@ const currentPath = Astro.url.pathname;
       });
     });
     
-    // Add particle animation
+    // Particle animation style
     if (!document.getElementById('particleStyle')) {
       const style = document.createElement('style');
       style.id = 'particleStyle';

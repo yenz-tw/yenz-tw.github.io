@@ -2,67 +2,119 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="特別企劃 | YENZ Design" description="艷世設計的特別企劃專案，展示我們對設計與文化的熱情。">
-  <!-- Hero -->
+<BaseLayout title="企業社會責任 CSR | YENZ Design" description="艷世設計以設計專業回饋社會，推動教育與公益計畫，實踐企業社會責任。">
   <section class="page-hero">
     <div class="page-hero-content">
-      <span class="page-hero-label">PROJECTS</span>
-      <h1 class="page-hero-title">特別企劃</h1>
-      <p class="page-hero-subtitle">Special Projects</p>
+      <span class="page-hero-label">CORPORATE SOCIAL RESPONSIBILITY</span>
+      <h1 class="page-hero-title">企業社會責任</h1>
+      <p class="page-hero-subtitle">CSR · Design for Good</p>
+    </div>
+    
+    <!-- 裝飾圓圈 -->
+    <div class="page-hero-circles">
+      <div class="hero-circle hero-circle-1"></div>
+      <div class="hero-circle hero-circle-2"></div>
     </div>
   </section>
   
-  <!-- Projects List -->
+  <!-- Intro -->
+  <section class="section section-cream">
+    <div class="csr-intro reveal">
+      <p class="csr-lead">以設計之力，回饋這片土地</p>
+      <p class="csr-text">
+        艷世設計深信，卓越的企業不僅追求商業成就，更應肩負社會責任。<br>
+        我們運用設計專業，投入教育推廣與公益計畫，期盼以美學的力量，為台灣這片土地種下希望的種子。
+      </p>
+    </div>
+  </section>
+  
+  <!-- Projects Grid -->
   <section class="section section-dark">
-    <div class="projects-grid">
+    <div class="section-header reveal">
+      <span class="section-number">01</span>
+      <h2 class="section-title">INITIATIVES</h2>
+      <p class="section-subtitle">社會責任計畫</p>
+    </div>
+    
+    <div class="csr-projects-grid">
       <!-- Foredu -->
-      <a href="/projects/foredu" class="project-card reveal">
-        <div class="project-card-bg" style="background: linear-gradient(135deg, #1a4d3a 0%, #0d3d2e 100%);"></div>
-        <div class="project-card-content">
-          <span class="project-label">ANIMATION / EDUCATION</span>
-          <h2 class="project-title">森知殿 Foredu</h2>
-          <p class="project-tagline">當設計遇見文化；當品牌成為故事。</p>
-          <p class="project-desc">
-            一場以動畫重現藝術文化史的視覺詩篇。<br>
-            台灣原生動物教育動畫計畫。
+      <a href="/projects/foredu" class="csr-project-card reveal">
+        <div class="csr-project-visual">
+          <div class="csr-project-icon">🌿</div>
+        </div>
+        <div class="csr-project-content">
+          <span class="csr-project-tag">教育計畫</span>
+          <h3 class="csr-project-title">森知殿 Foredu</h3>
+          <p class="csr-project-subtitle">台灣原生動物教育動畫</p>
+          <p class="csr-project-desc">
+            以四隻台灣原生動物為主角，透過精緻的動畫與溫暖的故事，帶領孩子們認識台灣的自然生態與文化之美。
           </p>
-          <span class="project-link">EXPLORE PROJECT →</span>
+          <span class="csr-project-link">探索計畫 →</span>
         </div>
       </a>
       
-      <!-- Light Up -->
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-card-bg" style="background: linear-gradient(135deg, #0a2820 0%, #061a12 100%);"></div>
-        <div class="project-card-content">
-          <span class="project-label">COMMUNITY</span>
-          <h2 class="project-title">點亮計畫</h2>
-          <p class="project-tagline">用設計支持新創之光</p>
-          <p class="project-desc">
-            艷世設計回饋社會的企劃，<br>
-            以優惠價格協助新創品牌建立專業形象。
+      <!-- 點亮計畫 -->
+      <div class="csr-project-card csr-coming-soon reveal reveal-delay-1">
+        <div class="csr-project-visual">
+          <div class="csr-project-icon">💡</div>
+        </div>
+        <div class="csr-project-content">
+          <span class="csr-project-tag">新創扶植</span>
+          <h3 class="csr-project-title">點亮計畫</h3>
+          <p class="csr-project-subtitle">用設計支持新創之光</p>
+          <p class="csr-project-desc">
+            為具有潛力的新創團隊提供設計支援，以專業協助他們在市場中綻放光芒，讓好的理念被世界看見。
           </p>
-          <span class="project-link coming-soon">COMING SOON</span>
+          <span class="csr-project-status">即將啟動</span>
         </div>
       </div>
+    </div>
+  </section>
+  
+  <!-- Vision -->
+  <section class="section section-gradient">
+    <div class="csr-vision reveal">
+      <div class="csr-vision-quote">
+        「設計不只是商業工具，更是改變世界的力量。」
+      </div>
+      <p class="csr-vision-text">
+        我們相信，每一個用心的設計，都能在社會中激起漣漪。<br>
+        艷世將持續以設計專業投入社會公益，與您一同為更美好的未來努力。
+      </p>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="section section-cream">
+    <div class="csr-cta reveal">
+      <h3>有公益計畫想要合作？</h3>
+      <p>我們歡迎與教育機構、非營利組織洽談合作機會</p>
+      <a href="/contact" class="btn">聯繫我們</a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  /* Page Hero */
   .page-hero {
-    min-height: 50vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background: linear-gradient(180deg, var(--forest-darkest) 0%, var(--forest-dark) 100%);
     padding-top: 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .page-hero-content {
+    position: relative;
+    z-index: 10;
   }
   
   .page-hero-label {
     font-family: 'Cinzel', serif;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: var(--gold);
     letter-spacing: 0.4em;
     display: block;
@@ -71,8 +123,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   
   .page-hero-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    font-weight: 300;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 400;
     color: var(--white);
     letter-spacing: 0.2em;
     margin-bottom: 1rem;
@@ -86,104 +138,195 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     letter-spacing: 0.15em;
   }
   
-  /* Projects Grid */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  
-  .project-card {
-    position: relative;
-    min-height: 500px;
-    overflow: hidden;
-    border: 1px solid rgba(201, 169, 98, 0.1);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    text-decoration: none;
-    display: block;
-  }
-  
-  .project-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-10px);
-  }
-  
-  .project-card-bg {
+  .page-hero-circles {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
   }
   
-  .project-card:hover .project-card-bg {
-    transform: scale(1.05);
+  .hero-circle {
+    position: absolute;
+    border: 1px solid rgba(201, 169, 98, 0.1);
+    border-radius: 50%;
   }
   
-  .project-card-content {
-    position: relative;
-    z-index: 1;
-    padding: 4rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    background: linear-gradient(180deg, transparent 20%, rgba(6,26,18,0.95) 100%);
+  .hero-circle-1 {
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: circleRotate 40s linear infinite;
   }
   
-  .project-label {
+  .hero-circle-2 {
+    width: 600px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: circleRotate 60s linear infinite reverse;
+  }
+  
+  @keyframes circleRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  
+  /* CSR Intro */
+  .csr-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .csr-lead {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--forest-dark);
+    margin-bottom: 2rem;
+  }
+  
+  .csr-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--forest);
+    line-height: 2.2;
+  }
+  
+  /* CSR Projects Grid */
+  .csr-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .csr-project-card {
+    background: rgba(201, 169, 98, 0.03);
+    border: 1px solid rgba(201, 169, 98, 0.15);
+    padding: 3rem;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    display: block;
+  }
+  
+  .csr-project-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+  }
+  
+  .csr-project-visual {
+    margin-bottom: 2rem;
+  }
+  
+  .csr-project-icon {
+    font-size: 3rem;
+  }
+  
+  .csr-project-tag {
     font-family: 'Cinzel', serif;
     font-size: 0.7rem;
     color: var(--gold);
     letter-spacing: 0.2em;
-    margin-bottom: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
   }
   
-  .project-title {
+  .csr-project-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 400;
-    color: var(--white);
-    margin-bottom: 1rem;
-  }
-  
-  .project-tagline {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.1rem;
     color: var(--gold);
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
   }
   
-  .project-desc {
+  .csr-project-subtitle {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+  
+  .csr-project-desc {
     font-size: 0.95rem;
     color: var(--gold-light);
-    line-height: 1.8;
-    margin-bottom: 2rem;
+    line-height: 1.9;
     opacity: 0.8;
+    margin-bottom: 1.5rem;
   }
   
-  .project-link {
+  .csr-project-link {
     font-family: 'Cinzel', serif;
     font-size: 0.8rem;
     color: var(--gold);
-    letter-spacing: 0.15em;
-    transition: all 0.3s ease;
+    letter-spacing: 0.1em;
   }
   
-  .project-card:hover .project-link {
-    letter-spacing: 0.2em;
+  .csr-project-status {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    opacity: 0.6;
   }
   
-  .project-link.coming-soon {
-    opacity: 0.5;
+  .csr-coming-soon {
+    opacity: 0.7;
   }
   
-  /* Responsive */
-  @media (max-width: 1024px) {
-    .projects-grid {
+  /* Vision */
+  .csr-vision {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .csr-vision-quote {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+  
+  .csr-vision-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    line-height: 2.2;
+  }
+  
+  /* CTA */
+  .csr-cta {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .csr-cta h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--forest-dark);
+    margin-bottom: 1rem;
+  }
+  
+  .csr-cta p {
+    font-size: 1rem;
+    color: var(--forest);
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .csr-projects-grid {
       grid-template-columns: 1fr;
     }
   }
